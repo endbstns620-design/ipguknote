@@ -2,7 +2,7 @@
 import html, json, os, sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from countries import COUNTRIES, AFFILIATES, VERIFIED, SITE_URL, REGIONS
+from countries import COUNTRIES, AFFILIATES, VERIFIED, SITE_URL, REGIONS, BASE, FORM_URL
 from guides import GUIDES
 
 with open(os.path.join(os.path.dirname(__file__), "data", "fields.json"), encoding="utf-8") as _f:
@@ -438,7 +438,7 @@ def build_about():
 <section class="card">
   <h2>개인정보 처리</h2>
   <p>계산기에 넣는 날짜와 시각은 이용자 기기 안에서만 계산되며 서버로 전송되지 않습니다. 체크리스트 체크 상태는 이용자 브라우저(localStorage)에만 저장되고, 브라우저 데이터를 지우면 함께 삭제됩니다.</p>
-  <p>제보·문의 양식에 적은 내용(선택 입력한 이메일 포함)은 답변과 정보 수정에만 쓰고, 처리 후 1년 안에 삭제합니다. 여권번호 같은 개인정보는 적지 마세요.</p>
+  <p>제보는 구글 설문지(Google Forms)로 받아요. 적은 내용(선택 입력한 이메일 포함)은 답변과 정보 수정에만 쓰고, 처리 후 1년 안에 삭제합니다. 여권번호 같은 개인정보는 적지 마세요.</p>
   <p style="margin-bottom:0">방문 통계 도구나 제휴 링크 제공사가 쿠키를 사용할 수 있으며, 이 경우 해당 내용을 이 페이지에 추가로 안내합니다.</p>
 </section>
 <section class="card">
@@ -460,20 +460,10 @@ def build_contact():
 <h1>정보 오류 제보·문의</h1>
 <p class="lead">바뀐 제도, 틀린 정보, 추가했으면 하는 나라를 알려주세요.</p>
 <section class="card">
-  <form class="form" name="contact" method="POST" action="/contact/thanks/" data-netlify="true" netlify-honeypot="bot-field">
-    <input type="hidden" name="form-name" value="contact">
-    <p hidden><label>비워두세요 <input name="bot-field"></label></p>
-    <label for="f-type">종류</label>
-    <select id="f-type" name="type">
-      <option>정보 오류 제보</option><option>나라 추가 요청</option><option>제휴·광고 문의</option><option>기타</option>
-    </select>
-    <label for="f-msg">내용</label>
-    <textarea id="f-msg" name="message" rows="6" required placeholder="어느 페이지의 어떤 내용이 다른지 적어주세요."></textarea>
-    <label for="f-mail">답장받을 이메일 (선택)</label>
-    <input id="f-mail" name="email" type="email" placeholder="you@example.com">
-    <p class="small muted">여권번호 등 개인정보는 적지 마세요. 입국신고 대행 요청은 받지 않습니다.</p>
-    <button class="btn btn-primary" type="submit">보내기</button>
-  </form>
+  <div class="panel-head"><h2>제보 양식</h2><span class="tag">GOOGLE FORM</span></div>
+  <p>종류(정보 오류 제보·나라 추가 요청·제휴 문의·기타)와 내용을 적어 주세요. 답장을 원하면 이메일도 남겨 주세요(선택).</p>
+  <p class="small muted">여권번호 등 개인정보는 적지 마세요. 입국신고 대행 요청은 받지 않아요. 제보는 구글 설문지로 받아요.</p>
+  <a class="btn btn-primary" href="{FORM_URL}" target="_blank" rel="noopener">제보 양식 열기 →</a>
 </section>
 """
     return page("contact/", "정보 오류 제보·문의 | 입국노트", "입국노트 정보 오류 제보와 문의.", body)
@@ -507,13 +497,12 @@ if __name__ == "__main__":
         write(f"guide/{g['slug']}/index.html", build_guide(g))
     write("about/index.html", build_about())
     write("contact/index.html", build_contact())
-    write("contact/thanks/index.html", build_thanks())
     nf = page("404/", "페이지를 찾을 수 없어요 | 입국노트", "입국노트",
               '<h1>페이지를 찾을 수 없어요</h1><p><a class="btn btn-primary" href="/">처음으로 돌아가기</a></p>', index=False)
-    write("404.html", nf.replace('"../', '"/'))
+    write("404.html", nf.replace('"../', '"' + BASE).replace('href="/"', 'href="' + BASE + '"'))
     for old in REMOVED:
         write(f"{old}/index.html", f'''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="robots" content="noindex">
-<meta http-equiv="refresh" content="0; url=/"><link rel="canonical" href="{SITE_URL}/"><title>입국노트</title></head>
-<body><p>공식 자료가 확인되지 않아 안내를 내렸어요. <a href="/">처음으로</a></p></body></html>''')
+<meta http-equiv="refresh" content="0; url={BASE}"><link rel="canonical" href="{SITE_URL}/"><title>입국노트</title></head>
+<body><p>공식 자료가 확인되지 않아 안내를 내렸어요. <a href="{BASE}">처음으로</a></p></body></html>''')
     write("sitemap.xml", build_sitemap())
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n")

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ipguknote.netlify.app/sitemap.xml
+Sitemap: https://endbstns620-design.github.io/ipguknote/sitemap.xml

@@ -2,8 +2,10 @@
 import json, os
 
 VERIFIED = "2026-10-05"
-# Netlify 사이트 이름을 ipguknote로 정하면 이 주소가 됩니다. 도메인을 바꾸면 여기만 수정
-SITE_URL = "https://ipguknote.netlify.app"
+# GitHub Pages 주소. 정식 도메인을 연결하면 여기만 수정
+SITE_URL = "https://endbstns620-design.github.io/ipguknote"
+BASE = "/ipguknote/"  # 사이트가 놓인 경로 (정식 도메인이면 "/")
+FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfzPvt9mvo_EEJuLjgAv7bi-6wBXkqENe1_P9BGquR_B4YgpA/viewform"
 
 with open(os.path.join(os.path.dirname(__file__), "data", "countries.json"), encoding="utf-8") as f:
     COUNTRIES = json.load(f)
