@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://endbstns620-design.github.io/ipguknote/sitemap.xml
+Sitemap: https://ipguknote.com/sitemap.xml
