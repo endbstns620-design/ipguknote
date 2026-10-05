@@ -88,15 +88,18 @@ def page(path, title, desc, body, jsonld=None, index=True):
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=IBM+Plex+Sans+KR:wght@400;600;700&display=swap">
 <link rel="icon" href="{up}assets/logo.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{up}assets/icon-180.png">
-<link rel="stylesheet" href="{up}assets/style.css?v={VERIFIED.replace("-", "")}b">
+<link rel="stylesheet" href="{up}assets/style.css?v={VERIFIED.replace("-", "")}d">
 {ld}
 </head>
 <body>
-<div class="notice">정부 사이트가 아니에요 · 대행하지 않아요 · 신고는 각국 공식 사이트에서 무료로 직접</div>
+<div class="notice"><span class="dot dot-amber"></span><span>정부 사이트가 아니에요</span><span class="sep">·</span><span>대행하지 않아요</span><span class="sep">·</span><strong>신고는 각국 공식 사이트에서 무료로 직접</strong></div>
+<div class="bg-airport" aria-hidden="true"></div>
 <header class="top"><div class="wrap">
   <a class="logo" href="{home}" aria-label="입국노트 홈"><img src="{up}assets/logo.svg" alt="" width="30" height="30"><b>입국<span>노트</span></b></a>
-  <div class="top-right"><span class="clock" data-clock><small>서울</small><span>--:--</span></span></div>
-  <nav><a href="{up}#countries">나라별</a><a href="{up}guide/">가이드</a><a href="{up}guide/fake-sites/">가짜 사이트 구별</a></nav>
+  <div class="top-right">
+    <span class="clock" data-clock><span class="dot dot-green"></span><small>서울</small><span>--:--:--</span></span>
+    <nav><a href="{up}#countries">나라별</a><a href="{up}guide/">가이드</a><a class="nav-warn" href="{up}guide/fake-sites/">가짜 사이트 구별</a></nav>
+  </div>
 </div></header>
 <main class="wrap">
 {body}
@@ -107,7 +110,7 @@ def page(path, title, desc, body, jsonld=None, index=True):
   <p>일부 링크는 제휴 링크이며, 구매 시 입국노트가 수수료를 받을 수 있습니다. 이용자가 내는 가격은 같습니다.</p>
   <p><a href="{up}about/">운영 원칙·개인정보</a> · <a href="{up}contact/">정보 오류 제보·문의</a> · <a href="{up}guide/">가이드</a></p>
 </div></footer>
-<script src="{up}assets/app.js?v={VERIFIED.replace("-", "")}b"></script>
+<script src="{up}assets/app.js?v={VERIFIED.replace("-", "")}d"></script>
 </body>
 </html>
 """
@@ -148,7 +151,7 @@ def calc_fields():
       <div><label for="d" data-reflabel="날짜">도착 날짜 (현지)</label><input id="d" type="date"></div>
       <div><label for="t" data-reflabel="시각">도착 시각 (현지)</label><input id="t" type="time" value="12:00"></div>
     </div>
-    <p class="calc-anytime badge badge-green" hidden>출발 전 언제든 작성할 수 있어요. 신청 시작 시각을 기다릴 필요가 없어요.</p>"""
+    <div class="calc-anytime" hidden><p><span class="dot dot-green"></span>출발 전 언제든 작성할 수 있어요. 신청 시작 시각을 기다릴 필요가 없어요.</p><a class="btn btn-primary btn-sm" href="#" target="_blank" rel="noopener" data-anytime-link>공식 사이트 바로가기 →</a></div>"""
 
 
 
@@ -166,6 +169,12 @@ def affiliate_block():
   <div class="aff">{''.join(items)}</div>
   <p class="small muted">제휴 링크입니다. 입국노트는 이 링크로 수수료를 받을 수 있지만, 입국신고 자체로는 어떤 돈도 받지 않습니다.</p>
 </section>"""
+
+
+def guide_grid(up):
+    return '<div class="guide-grid">' + "".join(
+        f'<a href="{up}guide/{g["slug"]}/"><span><small>GUIDE 0{i+1}</small>{e(g["title"])}</span><span class="arr">→</span></a>'
+        for i, g in enumerate(GUIDES)) + "</div>"
 
 
 def guide_list(up, only=None):
@@ -213,7 +222,7 @@ def build_index():
 </a>"""
             for i, c in enumerate(cs))
         blocks += f"""<div class="region board" data-region-block>
-  <div class="board-title"><h3>{e(label)}</h3><span>{len(cs)}개국</span></div>
+  <div class="board-title"><h3><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>{e(label)}</h3><span>{len(cs)}개국</span></div>
   <div class="board-head"><span>공항</span><span>나라</span><span>신고서</span><span>신청 가능 시점</span><span>의무 여부</span></div>
   {rows}
 </div>"""
@@ -222,41 +231,47 @@ def build_index():
             f'<option {country_attrs(c)}>{c["flag"]} {e(c["name"])} — {e(c["form_short"])}</option>' for c in cs) + "</optgroup>"
         for key, label, cs in region_groups())
     body = f"""
+<section class="hero card">
 <h1>해외 입국신고,<br><span class="hl">공식 사이트에서 무료로</span> 직접 하세요</h1>
 <p class="lead">한국인이 많이 가는 {n}개국의 전자 입국신고를 한곳에 정리했어요.</p>
 <ul class="hero-points">
-  <li><b>언제부터</b> 신청할 수 있는지 계산</li>
-  <li><b>공식 사이트</b>로 바로 이동</li>
-  <li>영문 항목을 한글로 풀어 쓴 <b>번역표</b> ({len(FIELDS)}개국)</li>
+  <li><span class="dot dot-amber"></span><span><b>언제부터</b> 신청할 수 있는지 계산</span></li>
+  <li><span class="dot dot-green"></span><span><b>공식 사이트</b>로 바로 이동</span></li>
+  <li><span class="dot dot-blue"></span><span>영문 항목을 한글로 풀어 쓴 <b>번역표</b> ({len(FIELDS)}개국)</span></li>
 </ul>
+</section>
 
 <section>
   <div class="card calc" data-calc>
-    <div class="panel-head"><h2>언제부터 신청할 수 있을까?</h2><span class="tag">계산기</span></div>
+    <div class="bar"><h2><span class="dot dot-amber"></span>언제부터 신청할 수 있을까?</h2><span class="tag">계산기</span></div><div class="calc-body">
     <div class="fields"><div class="full"><label for="c">여행 국가</label><select id="c">{options}</select></div></div>
     {calc_fields()}
     <div class="calc-out" hidden></div>
+    </div>
   </div>
 </section>
 
 <section id="countries">
-  <h2>나라별 안내</h2>
-  <input id="country-search" class="search" type="search" placeholder="나라 이름 검색 (예: 일본, 괌)" aria-label="나라 검색">
+  <div class="sec-head"><div><p class="eyebrow"><span class="dot dot-navy"></span>FLIGHT INFORMATION DISPLAY</p><h2>나라별 안내</h2></div><p class="small muted">나라를 누르면 신청 순서와 번역표를 볼 수 있어요.</p></div>
+  <div class="search-wrap"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg><input id="country-search" class="search" type="search" placeholder="나라 이름 또는 공항 코드 검색 (예: 일본, NRT, 괌)" aria-label="나라 검색"></div>
   {blocks}
   <p class="small muted">한국인이 많이 가는 나라 중 공식 온라인 입국신고가 있는 곳만 실었어요. 여기 없는 나라는 2026년 10월 기준 종이 카드를 쓰거나, 돈을 내는 전자여행허가(ETA)·비자만 있거나, 공식 자료로 확인되지 않은 곳이에요.</p>
 </section>
 
 <section id="fake">
-  <div class="warn">
+  <div class="warn warn-home">
+    <div class="warn-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg></div>
+    <div>
     <h2>결제창이 나오면 공식 사이트가 아니에요</h2>
     <p>"arrival card", "e-travel" 같은 이름의 유료 대행 사이트가 많아요. 입국노트에 실린 나라의 공식 입국신고는 모두 <strong>무료</strong>예요.</p>
-    <p class="small" style="margin-bottom:0"><a href="guide/fake-sites/">가짜 사이트 5초 구별법 →</a> · <a href="guide/compare/">{n}개국 공식 주소 표 →</a></p>
+    <p class="warn-links"><a href="guide/fake-sites/">가짜 사이트 5초 구별법 →</a><a href="guide/compare/">{n}개국 공식 주소 표 →</a></p>
+    </div>
   </div>
 </section>
 
 <section>
-  <h2>자주 찾는 가이드</h2>
-  {guide_list("")}
+  <h2><span class="dot dot-navy"></span>자주 찾는 가이드</h2>
+  {guide_grid("")}
 </section>
 {affiliate_block()}
 """
@@ -298,9 +313,10 @@ def build_country(c):
     calc = f"""
 <section>
   <div class="card calc" data-calc {country_attrs(c)}>
-    <div class="panel-head"><h2>내 비행기 기준으로 계산하기</h2><span class="tag">계산기</span></div>
+    <div class="bar"><h2><span class="dot dot-amber"></span>내 비행기 기준으로 계산하기</h2><span class="tag">계산기</span></div><div class="calc-body">
     {calc_fields()}
     <div class="calc-out" hidden></div>
+    </div>
   </div>
 </section>""" if has_calc else ""
     body = f"""

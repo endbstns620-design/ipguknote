@@ -117,7 +117,7 @@
       var where = c.ref === "arrival" ? "현지" : "출발 공항 현지";
       labels.forEach(function (l) { l.textContent = word + " " + l.dataset.reflabel + " (" + where + ")"; });
       var noCalc = c.wtype === "anytime" && !c.dl;
-      if (anyNote) anyNote.hidden = !noCalc;
+      if (anyNote) { anyNote.hidden = !noCalc; var al = anyNote.querySelector("[data-anytime-link]"); if (al) al.href = c.url; }
       if (fields) fields.hidden = noCalc;
       if (noCalc) out.hidden = true;
     }
@@ -214,8 +214,9 @@
 
 // 상단 시계 (서울 시간, 공항 전광판 느낌)
 (function () {
-  var el = document.querySelector("[data-clock] span");
-  if (!el) return;
+  var box = document.querySelector("[data-clock]");
+  if (!box) return;
+  var el = box.querySelector("span:last-child") || box;
   var f = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Seoul", hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23" });
   function tick() { el.textContent = f.format(new Date()); }
   tick(); setInterval(tick, 1000);
