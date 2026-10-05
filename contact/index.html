@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>정보 오류 제보·문의 | 입국노트</title>
+<meta name="description" content="입국노트 정보 오류 제보와 문의.">
+<link rel="canonical" href="https://ipguknote.netlify.app/contact/">
+
+<meta property="og:site_name" content="입국노트">
+<meta property="og:title" content="정보 오류 제보·문의 | 입국노트">
+<meta property="og:description" content="입국노트 정보 오류 제보와 문의.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ipguknote.netlify.app/contact/">
+<meta property="og:image" content="https://ipguknote.netlify.app/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07090c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&family=Share+Tech+Mono&family=IBM+Plex+Sans+KR:wght@400;600&display=swap">
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../assets/style.css">
+
+</head>
+<body>
+<div class="notice"><strong>입국노트는 정부 사이트가 아니며 신고를 대행하지 않습니다.</strong> 입국신고는 각국 공식 사이트에서 직접 하세요. 대부분 무료입니다.</div>
+<header class="top"><div class="wrap">
+  <a class="logo" href="../" aria-label="입국노트 홈"><span class="flap flap-logo" aria-label="입국노트"><span style="--i:0">입</span><span style="--i:1">국</span><span style="--i:2">노</span><span style="--i:3">트</span></span><span><span class="logo-sub">ARRIVAL CARD BOARD</span></span></a>
+  <div class="top-right"><span class="clock" data-clock><small>SEOUL</small><span>--:--</span></span></div>
+  <nav><a href="../#countries">나라별</a><a href="../guide/">가이드</a><a href="../guide/fake-sites/">가짜 사이트 구별</a></nav>
+</div></header>
+<main class="wrap">
+
+<p class="crumb"><a href="../">입국노트</a> › 제보·문의</p>
+<h1>정보 오류 제보·문의</h1>
+<p class="lead">바뀐 제도, 틀린 정보, 추가했으면 하는 나라를 알려주세요.</p>
+<section class="card">
+  <form class="form" name="contact" method="POST" action="/contact/thanks/" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="contact">
+    <p hidden><label>비워두세요 <input name="bot-field"></label></p>
+    <label for="f-type">종류</label>
+    <select id="f-type" name="type">
+      <option>정보 오류 제보</option><option>나라 추가 요청</option><option>제휴·광고 문의</option><option>기타</option>
+    </select>
+    <label for="f-msg">내용</label>
+    <textarea id="f-msg" name="message" rows="6" required placeholder="어느 페이지의 어떤 내용이 다른지 적어주세요."></textarea>
+    <label for="f-mail">답장받을 이메일 (선택)</label>
+    <input id="f-mail" name="email" type="email" placeholder="you@example.com">
+    <p class="small muted">여권번호 등 개인정보는 적지 마세요. 입국신고 대행 요청은 받지 않습니다.</p>
+    <button class="btn btn-primary" type="submit">보내기</button>
+  </form>
+</section>
+
+</main>
+<footer><div class="wrap">
+  <p>입국노트는 해외 전자 입국신고를 직접 할 수 있도록 공식 정보를 정리한 안내 사이트입니다. 어떤 정부 기관과도 관련이 없으며 신고 대행이나 개인정보 수집을 하지 않습니다.</p>
+  <p>정보 최종 확인: 2026-10-05. 제도는 예고 없이 바뀔 수 있으니 출발 전 공식 사이트에서 한 번 더 확인하세요.</p>
+  <p>일부 링크는 제휴 링크이며, 구매 시 입국노트가 수수료를 받을 수 있습니다. 이용자가 내는 가격은 같습니다.</p>
+  <p><a href="../about/">운영 원칙·개인정보</a> · <a href="../contact/">정보 오류 제보·문의</a> · <a href="../guide/">가이드</a></p>
+</div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>
