@@ -16,31 +16,36 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#07090c">
+<meta name="theme-color" content="#0b2d55">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&family=Share+Tech+Mono&family=IBM+Plex+Sans+KR:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=IBM+Plex+Sans+KR:wght@400;600;700&display=swap">
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="stylesheet" href="assets/style.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "입국노트", "url": "https://endbstns620-design.github.io/ipguknote/", "description": "전 세계 15개국 전자 입국신고 공식 사이트 안내"}</script>
 </head>
 <body>
-<div class="notice"><strong>입국노트는 정부 사이트가 아니며 신고를 대행하지 않습니다.</strong> 입국신고는 각국 공식 사이트에서 직접 하세요. 대부분 무료입니다.</div>
+<div class="notice">정부 사이트가 아니에요 · 대행하지 않아요 · 신고는 각국 공식 사이트에서 무료로 직접</div>
 <header class="top"><div class="wrap">
-  <a class="logo" href="./" aria-label="입국노트 홈"><span class="flap flap-logo" aria-label="입국노트"><span style="--i:0">입</span><span style="--i:1">국</span><span style="--i:2">노</span><span style="--i:3">트</span></span><span><span class="logo-sub">ARRIVAL CARD BOARD</span></span></a>
-  <div class="top-right"><span class="clock" data-clock><small>SEOUL</small><span>--:--</span></span></div>
+  <a class="logo" href="./" aria-label="입국노트 홈"><img src="assets/logo.svg" alt="" width="30" height="30"><b>입국<span>노트</span></b></a>
+  <div class="top-right"><span class="clock" data-clock><small>서울</small><span>--:--</span></span></div>
   <nav><a href="#countries">나라별</a><a href="guide/">가이드</a><a href="guide/fake-sites/">가짜 사이트 구별</a></nav>
 </div></header>
 <main class="wrap">
 
-<p class="eyebrow">ARRIVAL CARD INFORMATION · 15 DESTINATIONS</p>
-<h1><span class="flap" aria-label="해외 입국신고"><span style="--i:0">해</span><span style="--i:1">외</span><span class="sp" style="--i:2"> </span><span style="--i:3">입</span><span style="--i:4">국</span><span style="--i:5">신</span><span style="--i:6">고</span></span><br>공식 사이트에서 직접 하세요</h1>
-<p class="lead">일본·동남아·괌처럼 한국인이 많이 가는 나라 중 온라인 입국신고가 있는 15곳을 정리했어요. 언제부터 신청할 수 있는지 계산하고 공식 사이트로 바로 이동하세요. 한국인이 많이 가는 10개 나라는 영문 항목을 한글로 옮긴 <strong style="color:var(--yellow)">항목별 번역표</strong>도 있어요.</p>
+<h1>해외 입국신고,<br><span class="hl">공식 사이트에서 무료로</span> 직접 하세요</h1>
+<p class="lead">한국인이 많이 가는 15개국의 전자 입국신고를 한곳에 정리했어요.</p>
+<ul class="hero-points">
+  <li><b>언제부터</b> 신청할 수 있는지 계산</li>
+  <li><b>공식 사이트</b>로 바로 이동</li>
+  <li>영문 항목을 한글로 풀어 쓴 <b>번역표</b> (10개국)</li>
+</ul>
 
 <section>
   <div class="card calc" data-calc>
-    <div class="panel-head"><h2>언제부터 신청할 수 있을까?</h2><span class="tag">CHECK-IN TIMER</span></div>
+    <div class="panel-head"><h2>언제부터 신청할 수 있을까?</h2><span class="tag">계산기</span></div>
     <div class="fields"><div class="full"><label for="c">여행 국가</label><select id="c"><optgroup label="동북아시아"><option data-slug="japan" data-name="일본" data-form="Visit Japan Web" data-url="https://services.digital.go.jp/en/visit-japan-web/" data-iana="" data-ref="departure" data-wtype="anytime" data-wval="0" data-tzlabel="현지 시간 기준">🇯🇵 일본 — Visit Japan Web</option><option data-slug="taiwan" data-name="대만" data-form="TWAC" data-url="https://twac.immigration.gov.tw" data-iana="Asia/Taipei" data-ref="arrival" data-wtype="days" data-wval="3" data-tzlabel="현지 시간 기준">🇹🇼 대만 — TWAC</option><option data-slug="china" data-name="중국" data-form="중국 온라인 입국카드" data-url="https://s.nia.gov.cn/ArrivalCardFillingPC/" data-iana="" data-ref="departure" data-wtype="anytime" data-wval="0" data-tzlabel="현지 시간 기준">🇨🇳 중국 — 중국 온라인 입국카드</option></optgroup><optgroup label="동남아시아"><option data-slug="vietnam" data-name="베트남" data-form="사전 입국신고" data-url="https://prearrival.immigration.gov.vn/" data-iana="Asia/Ho_Chi_Minh" data-ref="arrival" data-wtype="hours" data-wval="72" data-tzlabel="베트남 시간 기준 (한국보다 2시간 느림)">🇻🇳 베트남 — 사전 입국신고</option><option data-slug="thailand" data-name="태국" data-form="TDAC" data-url="https://tdac.immigration.go.th/" data-iana="Asia/Bangkok" data-ref="arrival" data-wtype="hours" data-wval="72" data-tzlabel="태국 시간 기준 (한국보다 2시간 느림)">🇹🇭 태국 — TDAC</option><option data-slug="philippines" data-name="필리핀" data-form="eTravel" data-url="https://etravel.gov.ph/" data-iana="Asia/Manila" data-ref="arrival" data-wtype="hours" data-wval="72" data-tzlabel="필리핀 시간 기준 (한국보다 1시간 느림)">🇵🇭 필리핀 — eTravel</option><option data-slug="malaysia" data-name="말레이시아" data-form="MDAC" data-url="https://imigresen-online.imi.gov.my/mdac/main" data-iana="Asia/Kuala_Lumpur" data-ref="arrival" data-wtype="days" data-wval="3" data-tzlabel="말레이시아 시간 기준 (한국보다 1시간 느림)">🇲🇾 말레이시아 — MDAC</option><option data-slug="singapore" data-name="싱가포르" data-form="SG Arrival Card" data-url="https://www.ica.gov.sg/eservicesandforms/sgarrivalcard" data-iana="Asia/Singapore" data-ref="arrival" data-wtype="days" data-wval="3" data-tzlabel="싱가포르 시간 기준 (한국보다 1시간 느림)">🇸🇬 싱가포르 — SG Arrival Card</option><option data-slug="indonesia" data-name="인도네시아" data-form="All Indonesia" data-url="https://allindonesia.imigrasi.go.id" data-iana="Asia/Makassar" data-ref="arrival" data-wtype="days" data-wval="3" data-tzlabel="발리 시간 기준 (자카르타는 1시간 느림)">🇮🇩 인도네시아 — All Indonesia</option><option data-slug="cambodia" data-name="캄보디아" data-form="Cambodia e-Arrival" data-url="https://arrival.gov.kh" data-iana="Asia/Phnom_Penh" data-ref="arrival" data-wtype="days" data-wval="7" data-tzlabel="현지 시간 기준">🇰🇭 캄보디아 — Cambodia e-Arrival</option></optgroup><optgroup label="괌·팔라우·몰디브"><option data-slug="guam" data-name="괌" data-form="괌 EDF" data-url="https://guamedf.landing.cards/" data-iana="Pacific/Guam" data-ref="arrival" data-wtype="hours" data-wval="72" data-tzlabel="현지 시간 기준">🇬🇺 괌 — 괌 EDF</option><option data-slug="palau" data-name="팔라우" data-form="팔라우 입국신고서" data-url="https://palautravel.pw/" data-iana="" data-ref="departure" data-wtype="hours" data-wval="72" data-tzlabel="현지 시간 기준">🇵🇼 팔라우 — 팔라우 입국신고서</option><option data-slug="maldives" data-name="몰디브" data-form="IMUGA" data-url="https://imuga.immigration.gov.mv/" data-iana="Indian/Maldives" data-ref="arrival" data-wtype="hours" data-wval="96" data-tzlabel="현지 시간 기준">🇲🇻 몰디브 — IMUGA</option></optgroup><optgroup label="뉴질랜드·캐나다"><option data-slug="new-zealand" data-name="뉴질랜드" data-form="NZTD" data-url="https://www.travellerdeclaration.govt.nz/" data-iana="" data-ref="departure" data-wtype="hours" data-wval="24" data-tzlabel="현지 시간 기준">🇳🇿 뉴질랜드 — NZTD</option><option data-slug="canada" data-name="캐나다" data-form="ArriveCAN" data-url="https://arrivecan.cbsa-asfc.cloud-nuage.canada.ca/en/welcome" data-iana="America/Toronto" data-ref="arrival" data-wtype="hours" data-wval="72" data-tzlabel="토론토 시간 기준 (밴쿠버는 3시간 느림)">🇨🇦 캐나다 — ArriveCAN</option></optgroup></select></div></div>
     
     <div class="calc-fields fields">
@@ -53,114 +58,113 @@
 </section>
 
 <section id="countries">
-  <p class="eyebrow">ARRIVALS BOARD</p>
-  <h2>나라별 안내 (15개국)</h2>
-  <input id="country-search" class="search" type="search" placeholder="목적지 검색 — 일본, 괌, BKK…" aria-label="나라 검색">
+  <h2>나라별 안내</h2>
+  <input id="country-search" class="search" type="search" placeholder="나라 이름 검색 (예: 일본, 괌)" aria-label="나라 검색">
   <div class="region board" data-region-block>
-  <div class="board-title"><h3>동북아시아</h3><span>3 DESTINATIONS</span></div>
-  <div class="board-head"><span>CODE</span><span>목적지 DESTINATION</span><span>신고서 FORM</span><span>신청 OPENS</span><span>상태 STATUS</span></div>
+  <div class="board-title"><h3>동북아시아</h3><span>3개국</span></div>
+  <div class="board-head"><span>공항</span><span>나라</span><span>신고서</span><span>신청 가능 시점</span><span>의무 여부</span></div>
   <a class="board-row" style="--i:0" href="japan/" data-search="일본 Visit Japan Web japan NRT">
   <span class="code">NRT</span>
   <span class="dest"><span class="flag">🇯🇵</span>일본 <span class="ko-tag">번역표</span></span>
   <span class="form-name">Visit Japan Web</span>
   <span class="opens">출발 전 언제든지 (도착 6시간 전까지 완료 권장)</span>
-  <span class="status-cell"><span class="status st-opt">OPTIONAL<br>선택</span></span>
+  <span class="status-cell"><span class="status st-opt">선택</span></span>
 </a><a class="board-row" style="--i:1" href="taiwan/" data-search="대만 TWAC taiwan TPE">
   <span class="code">TPE</span>
   <span class="dest"><span class="flag">🇹🇼</span>대만 <span class="ko-tag">번역표</span></span>
   <span class="form-name">TWAC</span>
   <span class="opens">도착 3일 전부터</span>
-  <span class="status-cell"><span class="status st-req">REQUIRED<br>의무</span></span>
+  <span class="status-cell"><span class="status st-req">의무</span></span>
 </a><a class="board-row" style="--i:2" href="china/" data-search="중국 중국 온라인 입국카드 china PEK">
   <span class="code">PEK</span>
   <span class="dest"><span class="flag">🇨🇳</span>중국 <span class="ko-tag">번역표</span></span>
   <span class="form-name">중국 온라인 입국카드</span>
   <span class="opens">출발 전 언제든지</span>
-  <span class="status-cell"><span class="status st-opt">OPTIONAL<br>선택</span></span>
+  <span class="status-cell"><span class="status st-opt">선택</span></span>
 </a>
 </div><div class="region board" data-region-block>
-  <div class="board-title"><h3>동남아시아</h3><span>7 DESTINATIONS</span></div>
-  <div class="board-head"><span>CODE</span><span>목적지 DESTINATION</span><span>신고서 FORM</span><span>신청 OPENS</span><span>상태 STATUS</span></div>
+  <div class="board-title"><h3>동남아시아</h3><span>7개국</span></div>
+  <div class="board-head"><span>공항</span><span>나라</span><span>신고서</span><span>신청 가능 시점</span><span>의무 여부</span></div>
   <a class="board-row" style="--i:0" href="vietnam/" data-search="베트남 사전 입국신고 vietnam SGN">
   <span class="code">SGN</span>
   <span class="dest"><span class="flag">🇻🇳</span>베트남 <span class="ko-tag">번역표</span></span>
   <span class="form-name">사전 입국신고</span>
   <span class="opens">도착 72시간 전부터</span>
-  <span class="status-cell"><span class="status st-req">REQUIRED<br>의무</span></span>
+  <span class="status-cell"><span class="status st-req">의무</span></span>
 </a><a class="board-row" style="--i:1" href="thailand/" data-search="태국 TDAC thailand BKK">
   <span class="code">BKK</span>
   <span class="dest"><span class="flag">🇹🇭</span>태국 <span class="ko-tag">번역표</span></span>
   <span class="form-name">TDAC</span>
   <span class="opens">도착 72시간(3일) 전부터</span>
-  <span class="status-cell"><span class="status st-req">REQUIRED<br>의무</span></span>
+  <span class="status-cell"><span class="status st-req">의무</span></span>
 </a><a class="board-row" style="--i:2" href="philippines/" data-search="필리핀 eTravel philippines MNL">
   <span class="code">MNL</span>
   <span class="dest"><span class="flag">🇵🇭</span>필리핀 <span class="ko-tag">번역표</span></span>
   <span class="form-name">eTravel</span>
   <span class="opens">도착 72시간(3일) 전부터</span>
-  <span class="status-cell"><span class="status st-req">REQUIRED<br>의무</span></span>
+  <span class="status-cell"><span class="status st-req">의무</span></span>
 </a><a class="board-row" style="--i:3" href="malaysia/" data-search="말레이시아 MDAC malaysia KUL">
   <span class="code">KUL</span>
   <span class="dest"><span class="flag">🇲🇾</span>말레이시아 <span class="ko-tag">번역표</span></span>
   <span class="form-name">MDAC</span>
   <span class="opens">도착 3일 전부터</span>
-  <span class="status-cell"><span class="status st-req">REQUIRED<br>의무</span></span>
+  <span class="status-cell"><span class="status st-req">의무</span></span>
 </a><a class="board-row" style="--i:4" href="singapore/" data-search="싱가포르 SG Arrival Card singapore SIN">
   <span class="code">SIN</span>
   <span class="dest"><span class="flag">🇸🇬</span>싱가포르 <span class="ko-tag">번역표</span></span>
   <span class="form-name">SG Arrival Card</span>
   <span class="opens">도착일 포함 3일 전부터</span>
-  <span class="status-cell"><span class="status st-req">REQUIRED<br>의무</span></span>
+  <span class="status-cell"><span class="status st-req">의무</span></span>
 </a><a class="board-row" style="--i:5" href="indonesia/" data-search="인도네시아 All Indonesia indonesia DPS">
   <span class="code">DPS</span>
   <span class="dest"><span class="flag">🇮🇩</span>인도네시아 <span class="ko-tag">번역표</span></span>
   <span class="form-name">All Indonesia</span>
   <span class="opens">도착 3일 전부터</span>
-  <span class="status-cell"><span class="status st-req">REQUIRED<br>의무</span></span>
+  <span class="status-cell"><span class="status st-req">의무</span></span>
 </a><a class="board-row" style="--i:6" href="cambodia/" data-search="캄보디아 Cambodia e-Arrival cambodia PNH">
   <span class="code">PNH</span>
   <span class="dest"><span class="flag">🇰🇭</span>캄보디아</span>
   <span class="form-name">Cambodia e-Arrival</span>
   <span class="opens">도착 7일 전부터</span>
-  <span class="status-cell"><span class="status st-req">REQUIRED<br>의무</span></span>
+  <span class="status-cell"><span class="status st-req">의무</span></span>
 </a>
 </div><div class="region board" data-region-block>
-  <div class="board-title"><h3>괌·팔라우·몰디브</h3><span>3 DESTINATIONS</span></div>
-  <div class="board-head"><span>CODE</span><span>목적지 DESTINATION</span><span>신고서 FORM</span><span>신청 OPENS</span><span>상태 STATUS</span></div>
+  <div class="board-title"><h3>괌·팔라우·몰디브</h3><span>3개국</span></div>
+  <div class="board-head"><span>공항</span><span>나라</span><span>신고서</span><span>신청 가능 시점</span><span>의무 여부</span></div>
   <a class="board-row" style="--i:0" href="guam/" data-search="괌 괌 EDF guam GUM">
   <span class="code">GUM</span>
   <span class="dest"><span class="flag">🇬🇺</span>괌 <span class="ko-tag">번역표</span></span>
   <span class="form-name">괌 EDF</span>
   <span class="opens">괌 도착 72시간 전부터</span>
-  <span class="status-cell"><span class="status st-req">REQUIRED<br>의무</span></span>
+  <span class="status-cell"><span class="status st-req">의무</span></span>
 </a><a class="board-row" style="--i:1" href="palau/" data-search="팔라우 팔라우 입국신고서 palau ROR">
   <span class="code">ROR</span>
   <span class="dest"><span class="flag">🇵🇼</span>팔라우</span>
   <span class="form-name">팔라우 입국신고서</span>
   <span class="opens">팔라우행 출발 72시간 전부터</span>
-  <span class="status-cell"><span class="status st-req">REQUIRED<br>의무</span></span>
+  <span class="status-cell"><span class="status st-req">의무</span></span>
 </a><a class="board-row" style="--i:2" href="maldives/" data-search="몰디브 IMUGA maldives MLE">
   <span class="code">MLE</span>
   <span class="dest"><span class="flag">🇲🇻</span>몰디브</span>
   <span class="form-name">IMUGA</span>
   <span class="opens">도착 96시간(4일) 전부터</span>
-  <span class="status-cell"><span class="status st-req">REQUIRED<br>의무</span></span>
+  <span class="status-cell"><span class="status st-req">의무</span></span>
 </a>
 </div><div class="region board" data-region-block>
-  <div class="board-title"><h3>뉴질랜드·캐나다</h3><span>2 DESTINATIONS</span></div>
-  <div class="board-head"><span>CODE</span><span>목적지 DESTINATION</span><span>신고서 FORM</span><span>신청 OPENS</span><span>상태 STATUS</span></div>
+  <div class="board-title"><h3>뉴질랜드·캐나다</h3><span>2개국</span></div>
+  <div class="board-head"><span>공항</span><span>나라</span><span>신고서</span><span>신청 가능 시점</span><span>의무 여부</span></div>
   <a class="board-row" style="--i:0" href="new-zealand/" data-search="뉴질랜드 NZTD new-zealand AKL">
   <span class="code">AKL</span>
   <span class="dest"><span class="flag">🇳🇿</span>뉴질랜드</span>
   <span class="form-name">NZTD</span>
   <span class="opens">뉴질랜드행 여정 출발 24시간 전부터</span>
-  <span class="status-cell"><span class="status st-req">REQUIRED<br>의무</span></span>
+  <span class="status-cell"><span class="status st-req">의무</span></span>
 </a><a class="board-row" style="--i:1" href="canada/" data-search="캐나다 ArriveCAN canada YYZ">
   <span class="code">YYZ</span>
   <span class="dest"><span class="flag">🇨🇦</span>캐나다</span>
   <span class="form-name">ArriveCAN</span>
   <span class="opens">도착 72시간 전부터</span>
-  <span class="status-cell"><span class="status st-opt">OPTIONAL<br>선택</span></span>
+  <span class="status-cell"><span class="status st-opt">선택</span></span>
 </a>
 </div>
   <p class="small muted">한국인이 많이 가는 나라 중 공식 온라인 입국신고가 있는 곳만 실었어요. 여기 없는 나라는 2026년 10월 기준 종이 카드를 쓰거나, 돈을 내는 전자여행허가(ETA)·비자만 있거나, 공식 자료로 확인되지 않은 곳이에요.</p>
@@ -168,14 +172,13 @@
 
 <section id="fake">
   <div class="warn">
-    <h2>결제부터 요구하면 의심하세요</h2>
+    <h2>결제창이 나오면 공식 사이트가 아니에요</h2>
     <p>"arrival card", "e-travel" 같은 이름의 유료 대행 사이트가 많아요. 입국노트에 실린 나라의 공식 입국신고는 모두 <strong>무료</strong>예요.</p>
     <p class="small" style="margin-bottom:0"><a href="guide/fake-sites/">가짜 사이트 5초 구별법 →</a> · <a href="guide/compare/">15개국 공식 주소 표 →</a></p>
   </div>
 </section>
 
 <section>
-  <p class="eyebrow">TRAVEL GUIDES</p>
   <h2>자주 찾는 가이드</h2>
   <ul class="guide-list"><li><a href="guide/fake-sites/">가짜 입국신고 사이트 구별법 — 결제창이 나오면 멈추세요</a></li><li><a href="guide/compare/">나라별 전자 입국신고 한눈에 비교 (의무 여부·신청 시점·공식 주소)</a></li><li><a href="guide/timing/">입국신고 &#x27;72시간 전&#x27;과 &#x27;3일 전&#x27;은 뭐가 다를까?</a></li><li><a href="guide/philippines-red-qr/">필리핀 eTravel QR코드가 빨간색으로 나왔을 때</a></li><li><a href="guide/family/">가족·단체 여행 입국신고, 한 명이 다 해도 될까?</a></li><li><a href="guide/multi-country/">동남아 여러 나라를 이어서 여행할 때 입국신고 순서</a></li></ul>
 </section>

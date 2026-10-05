@@ -31,7 +31,7 @@ def field_guide(c):
     src = " · ".join(f'<a href="{e(u)}" target="_blank" rel="noopener">{e(t)}</a>' for t, u in f.get("sources", []))
     return f"""
 <section class="card fieldguide" id="field-guide">
-  <div class="panel-head"><h2>항목별 번역표</h2><span class="tag">FIELD GUIDE · EN→KO</span></div>
+  <div class="panel-head"><h2>항목별 번역표</h2><span class="tag">영문 항목 → 한글</span></div>
   <p class="small" style="margin-top:0"><strong style="color:var(--yellow)">{e(f.get('korean_ui_note') or ko)}</strong><br><span class="muted">{basis} 입국노트는 양식을 대신 작성하거나 파일로 배포하지 않아요. 공식 사이트 화면을 보면서 참고하세요.</span></p>
   {secs}
   {f'<div class="warn" style="margin-top:16px"><h2>한국인이 자주 틀리는 부분</h2><ul class="tips">{pit}</ul></div>' if pit else ''}
@@ -81,20 +81,21 @@ def page(path, title, desc, body, jsonld=None, index=True):
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#07090c">
+<meta name="theme-color" content="#0b2d55">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&family=Share+Tech+Mono&family=IBM+Plex+Sans+KR:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=IBM+Plex+Sans+KR:wght@400;600;700&display=swap">
 <link rel="icon" href="{up}assets/logo.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{up}assets/icon-180.png">
 <link rel="stylesheet" href="{up}assets/style.css">
 {ld}
 </head>
 <body>
-<div class="notice"><strong>입국노트는 정부 사이트가 아니며 신고를 대행하지 않습니다.</strong> 입국신고는 각국 공식 사이트에서 직접 하세요. 대부분 무료입니다.</div>
+<div class="notice">정부 사이트가 아니에요 · 대행하지 않아요 · 신고는 각국 공식 사이트에서 무료로 직접</div>
 <header class="top"><div class="wrap">
-  <a class="logo" href="{home}" aria-label="입국노트 홈">{flap("입국노트", "flap flap-logo")}<span><span class="logo-sub">ARRIVAL CARD BOARD</span></span></a>
-  <div class="top-right"><span class="clock" data-clock><small>SEOUL</small><span>--:--</span></span></div>
+  <a class="logo" href="{home}" aria-label="입국노트 홈"><img src="{up}assets/logo.svg" alt="" width="30" height="30"><b>입국<span>노트</span></b></a>
+  <div class="top-right"><span class="clock" data-clock><small>서울</small><span>--:--</span></span></div>
   <nav><a href="{up}#countries">나라별</a><a href="{up}guide/">가이드</a><a href="{up}guide/fake-sites/">가짜 사이트 구별</a></nav>
 </div></header>
 <main class="wrap">
@@ -122,14 +123,14 @@ def flap(text, cls="flap"):
 def status_tag(c):
     m = c["mandatory"]
     if m.startswith("의무"):
-        cls, en = "st-req", "REQUIRED"
+        cls = "st-req"
     elif m == "권장":
-        cls, en = "st-adv", "ADVISED"
+        cls = "st-adv"
     else:
-        cls, en = "st-opt", "OPTIONAL"
-    out = f'<span class="status {cls}">{en}<br>{e(m.split(" ")[0])}</span>'
+        cls = "st-opt"
+    out = f'<span class="status {cls}">{e(m.split(" ")[0])}</span>'
     if not is_free(c):
-        out += '<span class="status st-fee">FEE<br>공식요금</span>'
+        out += '<span class="status st-fee">공식 요금</span>'
     return f'<span class="status-cell">{out}</span>'
 
 
@@ -212,8 +213,8 @@ def build_index():
 </a>"""
             for i, c in enumerate(cs))
         blocks += f"""<div class="region board" data-region-block>
-  <div class="board-title"><h3>{e(label)}</h3><span>{len(cs)} DESTINATION{"S" if len(cs) > 1 else ""}</span></div>
-  <div class="board-head"><span>CODE</span><span>목적지 DESTINATION</span><span>신고서 FORM</span><span>신청 OPENS</span><span>상태 STATUS</span></div>
+  <div class="board-title"><h3>{e(label)}</h3><span>{len(cs)}개국</span></div>
+  <div class="board-head"><span>공항</span><span>나라</span><span>신고서</span><span>신청 가능 시점</span><span>의무 여부</span></div>
   {rows}
 </div>"""
     options = "".join(
@@ -221,13 +222,17 @@ def build_index():
             f'<option {country_attrs(c)}>{c["flag"]} {e(c["name"])} — {e(c["form_short"])}</option>' for c in cs) + "</optgroup>"
         for key, label, cs in region_groups())
     body = f"""
-<p class="eyebrow">ARRIVAL CARD INFORMATION · {n} DESTINATIONS</p>
-<h1>{flap("해외 입국신고")}<br>공식 사이트에서 직접 하세요</h1>
-<p class="lead">일본·동남아·괌처럼 한국인이 많이 가는 나라 중 온라인 입국신고가 있는 {n}곳을 정리했어요. 언제부터 신청할 수 있는지 계산하고 공식 사이트로 바로 이동하세요. 한국인이 많이 가는 {len(FIELDS)}개 나라는 영문 항목을 한글로 옮긴 <strong style="color:var(--yellow)">항목별 번역표</strong>도 있어요.</p>
+<h1>해외 입국신고,<br><span class="hl">공식 사이트에서 무료로</span> 직접 하세요</h1>
+<p class="lead">한국인이 많이 가는 {n}개국의 전자 입국신고를 한곳에 정리했어요.</p>
+<ul class="hero-points">
+  <li><b>언제부터</b> 신청할 수 있는지 계산</li>
+  <li><b>공식 사이트</b>로 바로 이동</li>
+  <li>영문 항목을 한글로 풀어 쓴 <b>번역표</b> ({len(FIELDS)}개국)</li>
+</ul>
 
 <section>
   <div class="card calc" data-calc>
-    <div class="panel-head"><h2>언제부터 신청할 수 있을까?</h2><span class="tag">CHECK-IN TIMER</span></div>
+    <div class="panel-head"><h2>언제부터 신청할 수 있을까?</h2><span class="tag">계산기</span></div>
     <div class="fields"><div class="full"><label for="c">여행 국가</label><select id="c">{options}</select></div></div>
     {calc_fields()}
     <div class="calc-out" hidden></div>
@@ -235,23 +240,21 @@ def build_index():
 </section>
 
 <section id="countries">
-  <p class="eyebrow">ARRIVALS BOARD</p>
-  <h2>나라별 안내 ({n}개국)</h2>
-  <input id="country-search" class="search" type="search" placeholder="목적지 검색 — 일본, 괌, BKK…" aria-label="나라 검색">
+  <h2>나라별 안내</h2>
+  <input id="country-search" class="search" type="search" placeholder="나라 이름 검색 (예: 일본, 괌)" aria-label="나라 검색">
   {blocks}
   <p class="small muted">한국인이 많이 가는 나라 중 공식 온라인 입국신고가 있는 곳만 실었어요. 여기 없는 나라는 2026년 10월 기준 종이 카드를 쓰거나, 돈을 내는 전자여행허가(ETA)·비자만 있거나, 공식 자료로 확인되지 않은 곳이에요.</p>
 </section>
 
 <section id="fake">
   <div class="warn">
-    <h2>결제부터 요구하면 의심하세요</h2>
+    <h2>결제창이 나오면 공식 사이트가 아니에요</h2>
     <p>"arrival card", "e-travel" 같은 이름의 유료 대행 사이트가 많아요. 입국노트에 실린 나라의 공식 입국신고는 모두 <strong>무료</strong>예요.</p>
     <p class="small" style="margin-bottom:0"><a href="guide/fake-sites/">가짜 사이트 5초 구별법 →</a> · <a href="guide/compare/">{n}개국 공식 주소 표 →</a></p>
   </div>
 </section>
 
 <section>
-  <p class="eyebrow">TRAVEL GUIDES</p>
   <h2>자주 찾는 가이드</h2>
   {guide_list("")}
 </section>
@@ -295,29 +298,28 @@ def build_country(c):
     calc = f"""
 <section>
   <div class="card calc" data-calc {country_attrs(c)}>
-    <div class="panel-head"><h2>내 비행기 기준, 언제 신청하면 될까?</h2><span class="tag">CHECK-IN TIMER</span></div>
+    <div class="panel-head"><h2>내 비행기 기준으로 계산하기</h2><span class="tag">계산기</span></div>
     {calc_fields()}
     <div class="calc-out" hidden></div>
   </div>
 </section>""" if has_calc else ""
     body = f"""
 <p class="crumb"><a href="{up}">입국노트</a> › {e(region_label)} › {e(c['name'])}</p>
-<p class="eyebrow">ARRIVAL CARD · {c['code']}</p>
 <h1>{e(c['name'])} {e(c['form_short'])} 작성법</h1>
 <p class="lead">{e(c['form'])}. {lead_fee} {e(c['window_text'])} 신청할 수 있어요.</p>
 
 <section class="fids">
   <div class="fids-top"><span class="code">{c['code']}</span><span class="where">{c['flag']} {e(c['name'])}</span><span style="margin-left:auto">{status_tag(c)}</span></div>
   <div class="fids-grid">
-    <div class="fids-cell"><b>FORM 신고서</b><span>{e(c['form_short'])}</span></div>
-    <div class="fids-cell"><b>OPENS 신청 시점</b><span style="color:var(--blue)">{e(c['window_text'])}</span></div>
-    <div class="fids-cell"><b>FEE 비용</b><span style="color:{'var(--green)' if free else 'var(--red)'}">{e(fee_short)}</span></div>
+    <div class="fids-cell"><b>신고서</b><span>{e(c['form_short'])}</span></div>
+    <div class="fids-cell"><b>신청 가능 시점</b><span style="color:var(--blue)">{e(c['window_text'])}</span></div>
+    <div class="fids-cell"><b>비용</b><span style="color:{'var(--green)' if free else 'var(--red)'}">{e(fee_short)}</span></div>
   </div>
 </section>
 {low}
 <section>
   <div class="card gate">
-    <div class="panel-head" style="margin-bottom:0"><h2>공식 사이트</h2><span class="tag">GATE · OFFICIAL</span></div>
+    <div class="panel-head" style="margin-bottom:0"><h2>공식 사이트</h2><span class="tag">여기서 신청</span></div>
     <span class="domain">{e(c['domain'])}</span>
     <a class="btn btn-primary" href="{e(c['url'])}" target="_blank" rel="noopener">공식 사이트에서 신청하기{' (무료)' if free else ''} →</a>
     <p class="small muted" style="margin:0">{e(c['status'])}</p>
@@ -327,7 +329,7 @@ def build_country(c):
 </section>
 {calc}
 <section class="card">
-  <div class="panel-head"><h2>신청 순서</h2><span class="tag">STEPS</span></div>
+  <div class="panel-head"><h2>신청 순서</h2></div>
   <ol class="steps">{steps}</ol>
   <p class="small muted" style="margin-bottom:0">{e(c['result'])}</p>
 </section>
@@ -345,7 +347,6 @@ def build_country(c):
 </section>
 
 <section>
-  <p class="eyebrow">FAQ</p>
   <h2>자주 묻는 질문</h2>
   {faq}
 </section>
@@ -460,7 +461,7 @@ def build_contact():
 <h1>정보 오류 제보·문의</h1>
 <p class="lead">바뀐 제도, 틀린 정보, 추가했으면 하는 나라를 알려주세요.</p>
 <section class="card">
-  <div class="panel-head"><h2>제보 양식</h2><span class="tag">GOOGLE FORM</span></div>
+  <div class="panel-head"><h2>제보 양식</h2></div>
   <p>종류(정보 오류 제보·나라 추가 요청·제휴 문의·기타)와 내용을 적어 주세요. 답장을 원하면 이메일도 남겨 주세요(선택).</p>
   <p class="small muted">여권번호 등 개인정보는 적지 마세요. 입국신고 대행 요청은 받지 않아요. 제보는 구글 설문지로 받아요.</p>
   <a class="btn btn-primary" href="{FORM_URL}" target="_blank" rel="noopener">제보 양식 열기 →</a>
