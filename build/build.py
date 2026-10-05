@@ -88,7 +88,7 @@ def page(path, title, desc, body, jsonld=None, index=True):
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=IBM+Plex+Sans+KR:wght@400;600;700&display=swap">
 <link rel="icon" href="{up}assets/logo.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{up}assets/icon-180.png">
-<link rel="stylesheet" href="{up}assets/style.css">
+<link rel="stylesheet" href="{up}assets/style.css?v={VERIFIED.replace("-", "")}b">
 {ld}
 </head>
 <body>
@@ -107,7 +107,7 @@ def page(path, title, desc, body, jsonld=None, index=True):
   <p>일부 링크는 제휴 링크이며, 구매 시 입국노트가 수수료를 받을 수 있습니다. 이용자가 내는 가격은 같습니다.</p>
   <p><a href="{up}about/">운영 원칙·개인정보</a> · <a href="{up}contact/">정보 오류 제보·문의</a> · <a href="{up}guide/">가이드</a></p>
 </div></footer>
-<script src="{up}assets/app.js"></script>
+<script src="{up}assets/app.js?v={VERIFIED.replace("-", "")}b"></script>
 </body>
 </html>
 """
