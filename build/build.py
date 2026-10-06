@@ -2,7 +2,7 @@
 import html, json, os, sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from countries import COUNTRIES, AFFILIATES, VERIFIED, SITE_URL, REGIONS, BASE, FORM_URL
+from countries import COUNTRIES, AFFILIATES, VERIFIED, SITE_URL, REGIONS, BASE, FORM_URL, GOOGLE_VERIFY, NAVER_VERIFY
 from guides import GUIDES
 
 with open(os.path.join(os.path.dirname(__file__), "data", "fields.json"), encoding="utf-8") as _f:
@@ -77,7 +77,7 @@ def page(path, title, desc, body, jsonld=None, index=True):
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE_URL}/assets/og.png">
+<meta property="og:image" content="{SITE_URL}/assets/og.png">{f'<meta name="google-site-verification" content="{GOOGLE_VERIFY}">' if GOOGLE_VERIFY and not path else ''}{f'<meta name="naver-site-verification" content="{NAVER_VERIFY}">' if NAVER_VERIFY and not path else ''}
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -88,7 +88,7 @@ def page(path, title, desc, body, jsonld=None, index=True):
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=IBM+Plex+Sans+KR:wght@400;600;700&display=swap">
 <link rel="icon" href="{up}assets/logo.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{up}assets/icon-180.png">
-<link rel="stylesheet" href="{up}assets/style.css?v={VERIFIED.replace("-", "")}d">
+<link rel="stylesheet" href="{up}assets/style.css?v={VERIFIED.replace("-", "")}e">
 {ld}
 </head>
 <body>
@@ -110,7 +110,7 @@ def page(path, title, desc, body, jsonld=None, index=True):
   <p>일부 링크는 제휴 링크이며, 구매 시 입국노트가 수수료를 받을 수 있습니다. 이용자가 내는 가격은 같습니다.</p>
   <p><a href="{up}about/">운영 원칙·개인정보</a> · <a href="{up}contact/">정보 오류 제보·문의</a> · <a href="{up}guide/">가이드</a></p>
 </div></footer>
-<script src="{up}assets/app.js?v={VERIFIED.replace("-", "")}d"></script>
+<script src="{up}assets/app.js?v={VERIFIED.replace("-", "")}e"></script>
 </body>
 </html>
 """
@@ -155,20 +155,65 @@ def calc_fields():
 
 
 
-def affiliate_block():
-    items = []
-    for a in AFFILIATES:
-        inner = f'<h3>{e(a["title"])}</h3><p>{e(a["desc"])}</p>'
-        if a["href"]:
-            items.append(f'<a href="{e(a["href"])}" target="_blank" rel="sponsored noopener">{inner}</a>')
+AFF_NOTE = "제휴 링크예요. 이 링크로 구매하면 입국노트가 수수료를 받을 수 있지만, 내는 가격은 같아요. 입국신고 자체는 공식 사이트에서 무료예요."
+
+
+def aff_href(a, c=None):
+    """나라별 링크가 있으면 그것을, 없으면 기본 링크를 돌려줘요."""
+    if c is not None:
+        u = (a.get("by_country") or {}).get(c["slug"])
+        if u:
+            return u
+    return a.get("href") or ""
+
+
+def aff_items(c=None, limit=None):
+    out = [(a, aff_href(a, c)) for a in AFFILIATES]
+    out = [(a, h) for a, h in out if h]
+    return out[:limit] if limit else out
+
+
+def affiliate_block(c=None):
+    items = aff_items(c)
     if not items:
         return ""  # 제휴 링크가 하나도 없으면 섹션 자체를 숨김
+    where = f"{c['name']} " if c else ""
+    cards = "".join(
+        f'<a href="{e(h)}" target="_blank" rel="sponsored noopener"><h3>{e(a["title"])}</h3><p>{e(a["desc"])}</p></a>'
+        for a, h in items)
     return f"""
-<section>
-  <h2>입국신고 말고, 출국 전에 챙길 것</h2>
-  <div class="aff">{''.join(items)}</div>
-  <p class="small muted">제휴 링크입니다. 입국노트는 이 링크로 수수료를 받을 수 있지만, 입국신고 자체로는 어떤 돈도 받지 않습니다.</p>
+<section class="aff-sec">
+  <div class="aff-head"><h2>입국신고 말고, {e(where)}출국 전에 챙길 것</h2><span class="ad-tag">광고 · 제휴</span></div>
+  <div class="aff">{cards}</div>
+  <p class="small muted">{AFF_NOTE}</p>
 </section>"""
+
+
+def prep_card(c=None):
+    """계산기 바로 아래 '출발 전 이것도 챙기세요' 카드 (선택 사항임을 분명히)."""
+    items = aff_items(c, limit=3)
+    if not items:
+        return ""
+    links = "".join(
+        f'<a href="{e(h)}" target="_blank" rel="sponsored noopener"><b>{e(a["title"])}</b><span>{e(a["desc"])}</span></a>'
+        for a, h in items)
+    return f"""
+<div class="prep">
+  <div class="prep-head"><p><span class="dot dot-blue"></span>출발 전 이것도 챙기세요 <em>(선택)</em></p><span class="ad-tag">광고 · 제휴</span></div>
+  <div class="prep-links">{links}</div>
+  <p class="prep-note">{AFF_NOTE}</p>
+</div>"""
+
+
+def check_items(c):
+    """체크리스트에 넣을 제휴 항목 — 링크가 있을 때만."""
+    out = []
+    for a in AFFILIATES:
+        h = aff_href(a, c)
+        if h and a.get("check"):
+            out.append(f'<label><input type="checkbox"><span>{e(a["check"])} '
+                       f'<a class="check-aff" href="{e(h)}" target="_blank" rel="sponsored noopener">보러 가기 (제휴)</a></span></label>')
+    return "".join(out)
 
 
 def guide_grid(up):
@@ -249,6 +294,7 @@ def build_index():
     <div class="calc-out" hidden></div>
     </div>
   </div>
+  {prep_card()}
 </section>
 
 <section id="countries">
@@ -297,7 +343,7 @@ def build_country(c):
     steps = "".join(f"<li>{e(s)}</li>" for s in c["steps"])
     tips = "".join(f"<li>{e(s)}</li>" for s in c["tips"])
     checks = c["needs"] + GENERAL_CHECK + [f"공식 사이트에서 {c['form_short']} 제출", "받은 QR·확인 메일 캡처해 두기"]
-    checklist = "".join(f'<label><input type="checkbox"><span>{e(x)}</span></label>' for x in checks)
+    checklist = "".join(f'<label><input type="checkbox"><span>{e(x)}</span></label>' for x in checks) + check_items(c)
     faq = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in c["faq"])
     sources = " · ".join(f'<a href="{e(u)}" target="_blank" rel="noopener">{e(t)}</a>' for t, u in c["sources"])
     region_label = dict(REGIONS)[c["region"]]
@@ -318,7 +364,8 @@ def build_country(c):
     <div class="calc-out" hidden></div>
     </div>
   </div>
-</section>""" if has_calc else ""
+  {prep_card(c)}
+</section>""" if has_calc else (f"<section>{prep_card(c)}</section>" if prep_card(c) else "")
     body = f"""
 <p class="crumb"><a href="{up}">입국노트</a> › {e(region_label)} › {e(c['name'])}</p>
 <h1>{e(c['name'])} {e(c['form_short'])} 작성법</h1>
@@ -371,7 +418,7 @@ def build_country(c):
   <h2>함께 보면 좋은 가이드</h2>
   {guide_list(up, RELATED.get(c['slug'], DEFAULT_RELATED))}
 </section>
-{affiliate_block()}
+{affiliate_block(c)}
 <p class="small muted">참고한 공식 안내: {sources} (최종 확인 {VERIFIED})<br>
 틀린 정보를 발견하면 <a href="{up}contact/">제보해 주세요</a>.</p>
 {f'<p class="small muted">{e(region_label)} 다른 나라: {others}</p>' if others else ''}
