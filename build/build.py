@@ -168,8 +168,17 @@ def aff_href(a, c=None):
 
 
 def aff_items(c=None, limit=None):
-    out = [(a, aff_href(a, c)) for a in AFFILIATES]
-    out = [(a, h) for a, h in out if h]
+    out = []
+    for a in AFFILIATES:
+        h = aff_href(a, c)
+        if h:
+            out.append((a, h))
+        elif c is None:
+            # 첫 화면처럼 나라가 정해지지 않은 곳: 나라별 링크를 '나라 + 상품' 카드로 보여줘요
+            names = {x["slug"]: x["name"] for x in COUNTRIES}
+            for slug, u in (a.get("by_country") or {}).items():
+                if u and slug in names:
+                    out.append((dict(a, title=f'{names[slug]} {a["title"]}'), u))
     return out[:limit] if limit else out
 
 

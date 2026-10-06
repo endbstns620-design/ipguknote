@@ -30,11 +30,11 @@ AFFILIATES = [
         "title": "eSIM / 데이터",
         "desc": "도착하자마자 지도·메신저 쓰기",
         "check": "현지 데이터(eSIM·유심·로밍) 준비",
-        # TODO: 마이리얼트립 '광고 링크 만들기'로 만든 제휴 링크로 교체 (지금은 일반 상품 주소라 수수료 없음)
-        "href": "https://www.myrealtrip.com",
+        # 마이리얼트립 제휴 링크 (광고 링크 만들기로 생성, 2026-10-06)
+        "href": "",
         "by_country": {
-            "vietnam": "https://www.myrealtrip.com/offers/138780",
-            "japan": "https://www.myrealtrip.com/offers/138635",
+            "vietnam": "https://myrealt.rip/uGqZ7a",
+            "japan": "https://myrealt.rip/uGqj81",
         },
     },
     {
