@@ -328,7 +328,6 @@ def build_index():
   <h2><span class="dot dot-navy"></span>자주 찾는 가이드</h2>
   {guide_grid("")}
 </section>
-{affiliate_block()}
 """
     ld = {"@context": "https://schema.org", "@type": "WebSite", "name": SITE, "url": SITE_URL + "/",
           "description": f"전 세계 {n}개국 전자 입국신고 공식 사이트 안내"}
@@ -352,7 +351,7 @@ def build_country(c):
     steps = "".join(f"<li>{e(s)}</li>" for s in c["steps"])
     tips = "".join(f"<li>{e(s)}</li>" for s in c["tips"])
     checks = c["needs"] + GENERAL_CHECK + [f"공식 사이트에서 {c['form_short']} 제출", "받은 QR·확인 메일 캡처해 두기"]
-    checklist = "".join(f'<label><input type="checkbox"><span>{e(x)}</span></label>' for x in checks) + check_items(c)
+    checklist = "".join(f'<label><input type="checkbox"><span>{e(x)}</span></label>' for x in checks)
     faq = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in c["faq"])
     sources = " · ".join(f'<a href="{e(u)}" target="_blank" rel="noopener">{e(t)}</a>' for t, u in c["sources"])
     region_label = dict(REGIONS)[c["region"]]
@@ -427,7 +426,6 @@ def build_country(c):
   <h2>함께 보면 좋은 가이드</h2>
   {guide_list(up, RELATED.get(c['slug'], DEFAULT_RELATED))}
 </section>
-{affiliate_block(c)}
 <p class="small muted">참고한 공식 안내: {sources} (최종 확인 {VERIFIED})<br>
 틀린 정보를 발견하면 <a href="{up}contact/">제보해 주세요</a>.</p>
 {f'<p class="small muted">{e(region_label)} 다른 나라: {others}</p>' if others else ''}
@@ -466,7 +464,6 @@ def build_guide(g):
   <h2>다른 가이드</h2>
   {more}
 </section>
-{affiliate_block()}
 """
     ld = {"@context": "https://schema.org", "@type": "Article", "headline": g["title"],
           "dateModified": VERIFIED, "author": {"@type": "Organization", "name": SITE}}
