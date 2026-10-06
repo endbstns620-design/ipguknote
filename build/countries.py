@@ -6,7 +6,7 @@ VERIFIED = "2026-10-05"
 SITE_URL = "https://ipguknote.com"
 BASE = "/"  # 사이트가 놓인 경로 (정식 도메인이면 "/")
 # 검색엔진 소유확인 코드 (content 값만). 비어 있으면 태그를 넣지 않아요.
-GOOGLE_VERIFY = ""
+GOOGLE_VERIFY = "YxY2f6U9yoPJfsTSQ8SFUiZrHlhAiHVAdFz5KydUfgo"
 NAVER_VERIFY = ""
 FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfzPvt9mvo_EEJuLjgAv7bi-6wBXkqENe1_P9BGquR_B4YgpA/viewform"
 
