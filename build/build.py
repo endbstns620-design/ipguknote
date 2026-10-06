@@ -53,6 +53,17 @@ GENERAL_CHECK = [
 ]
 
 
+OG_VER = "1"  # 미리보기 이미지를 바꾸면 숫자를 올려요 (카카오톡 캐시 갱신)
+
+
+def og_image(path):
+    """나라 페이지는 그 나라 카드, 나머지는 첫 화면 카드 (assets/og/*.jpg, build/make_og.cjs로 생성)"""
+    slug = path.split("/")[0]
+    here = os.path.dirname(os.path.abspath(__file__))
+    name = slug if slug and os.path.exists(os.path.join(here, "..", "assets", "og", slug + ".jpg")) else "home"
+    return f"{SITE_URL}/assets/og/{name}.jpg?v={OG_VER}"
+
+
 def page(path, title, desc, body, jsonld=None, index=True):
     """path: 사이트 루트 기준 경로 ('' = 홈, 'vietnam/' 등)"""
     depth = path.count("/")
@@ -77,7 +88,7 @@ def page(path, title, desc, body, jsonld=None, index=True):
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE_URL}/assets/og.png">{f'<meta name="google-site-verification" content="{GOOGLE_VERIFY}">' if GOOGLE_VERIFY and not path else ''}{f'<meta name="naver-site-verification" content="{NAVER_VERIFY}">' if NAVER_VERIFY and not path else ''}
+<meta property="og:image" content="{og_image(path)}">{f'<meta name="google-site-verification" content="{GOOGLE_VERIFY}">' if GOOGLE_VERIFY and not path else ''}{f'<meta name="naver-site-verification" content="{NAVER_VERIFY}">' if NAVER_VERIFY and not path else ''}
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
