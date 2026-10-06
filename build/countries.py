@@ -36,6 +36,7 @@ AFFILIATES = [
             "vietnam": "https://myrealt.rip/uGqZ7a",
             "japan": "https://myrealt.rip/uGqj81",
             "thailand": "https://myrealt.rip/uGtF92",
+            "philippines": "https://myrealt.rip/uGv89d",
             "guam": "https://myrealt.rip/uGtI8a",
         },
     },
