@@ -221,3 +221,23 @@
   function tick() { el.textContent = f.format(new Date()); }
   tick(); setInterval(tick, 1000);
 })();
+
+// 방문 통계 이벤트 (구글 애널리틱스) — 제휴 카드·공식 사이트·계산기 사용
+(function () {
+  function track(name, params) { if (typeof window.gtag === "function") window.gtag("event", name, params || {}); }
+  var page = location.pathname.replace(/^\/|\/$/g, "") || "home";
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("a");
+    if (!a) return;
+    if (a.closest(".prep")) {
+      var b = a.querySelector("b");
+      track("affiliate_click", { page: page, item: b ? b.textContent.trim() : a.href, link_url: a.href });
+    } else if (a.closest(".gate") || a.closest(".calc-actions") || a.hasAttribute("data-anytime-link")) {
+      track("official_site_click", { page: page, link_url: a.href });
+    }
+  });
+  var once = false;
+  document.addEventListener("change", function (e) {
+    if (!once && e.target.closest("[data-calc]") && e.target.type === "date") { once = true; track("calculator_use", { page: page }); }
+  });
+})();

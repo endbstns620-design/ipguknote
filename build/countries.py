@@ -8,6 +8,8 @@ BASE = "/"  # 사이트가 놓인 경로 (정식 도메인이면 "/")
 # 검색엔진 소유확인 코드 (content 값만). 비어 있으면 태그를 넣지 않아요.
 GOOGLE_VERIFY = "YxY2f6U9yoPJfsTSQ8SFUiZrHlhAiHVAdFz5KydUfgo"
 NAVER_VERIFY = "f6b9bc06ce70d9c3db9ef40c7655f1d48662a16f"
+# 구글 애널리틱스 측정 ID (비우면 통계 코드를 넣지 않아요)
+GA_ID = "G-HC71Z01TFX"
 FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfzPvt9mvo_EEJuLjgAv7bi-6wBXkqENe1_P9BGquR_B4YgpA/viewform"
 
 with open(os.path.join(os.path.dirname(__file__), "data", "countries.json"), encoding="utf-8") as f:

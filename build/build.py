@@ -2,7 +2,7 @@
 import html, json, os, sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from countries import COUNTRIES, AFFILIATES, VERIFIED, SITE_URL, REGIONS, BASE, FORM_URL, GOOGLE_VERIFY, NAVER_VERIFY
+from countries import COUNTRIES, AFFILIATES, VERIFIED, SITE_URL, REGIONS, BASE, FORM_URL, GOOGLE_VERIFY, NAVER_VERIFY, GA_ID
 from guides import GUIDES
 
 with open(os.path.join(os.path.dirname(__file__), "data", "fields.json"), encoding="utf-8") as _f:
@@ -92,14 +92,16 @@ def page(path, title, desc, body, jsonld=None, index=True):
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0b2d55">
+<meta name="theme-color" content="#0b2d55">{f"""
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','{GA_ID}');</script>""" if GA_ID else ""}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=IBM+Plex+Sans+KR:wght@400;600;700&display=swap">
 <link rel="icon" href="{up}assets/logo.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{up}assets/icon-180.png">
-<link rel="stylesheet" href="{up}assets/style.css?v={VERIFIED.replace("-", "")}e">
+<link rel="stylesheet" href="{up}assets/style.css?v={VERIFIED.replace("-", "")}f">
 {ld}
 </head>
 <body>
@@ -121,7 +123,7 @@ def page(path, title, desc, body, jsonld=None, index=True):
   <p>일부 링크는 제휴 링크이며, 구매 시 입국노트가 수수료를 받을 수 있습니다. 이용자가 내는 가격은 같습니다.</p>
   <p><a href="{up}about/">운영 원칙·개인정보</a> · <a href="{up}contact/">정보 오류 제보·문의</a> · <a href="{up}guide/">가이드</a></p>
 </div></footer>
-<script src="{up}assets/app.js?v={VERIFIED.replace("-", "")}e"></script>
+<script src="{up}assets/app.js?v={VERIFIED.replace("-", "")}f"></script>
 </body>
 </html>
 """
@@ -520,7 +522,7 @@ def build_about():
   <h2>개인정보 처리</h2>
   <p>계산기에 넣는 날짜와 시각은 이용자 기기 안에서만 계산되며 서버로 전송되지 않습니다. 체크리스트 체크 상태는 이용자 브라우저(localStorage)에만 저장되고, 브라우저 데이터를 지우면 함께 삭제됩니다.</p>
   <p>제보는 구글 설문지(Google Forms)로 받아요. 적은 내용(선택 입력한 이메일 포함)은 답변과 정보 수정에만 쓰고, 처리 후 1년 안에 삭제합니다. 여권번호 같은 개인정보는 적지 마세요.</p>
-  <p style="margin-bottom:0">방문 통계 도구나 제휴 링크 제공사가 쿠키를 사용할 수 있으며, 이 경우 해당 내용을 이 페이지에 추가로 안내합니다.</p>
+  <p style="margin-bottom:0">방문자 수와 많이 보는 페이지를 알기 위해 구글 애널리틱스를 사용해요. 이름·연락처 같은 개인 정보는 수집하지 않고, 쿠키로 방문 횟수와 클릭 같은 이용 통계만 모아요. 브라우저 설정에서 쿠키를 막거나 <a href="https://tools.google.com/dlpage/gaoptout?hl=ko" target="_blank" rel="noopener">구글 애널리틱스 차단 도구</a>를 쓰면 수집되지 않아요. 제휴 링크 제공사(마이리얼트립)도 구매 확인을 위해 쿠키를 사용할 수 있어요.</p>
 </section>
 <section class="card">
   <h2>제휴 링크 고지</h2>
