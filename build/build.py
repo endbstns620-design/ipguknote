@@ -2,7 +2,7 @@
 import html, json, os, sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from countries import COUNTRIES, AFFILIATES, VERIFIED, SITE_URL, REGIONS, BASE, FORM_URL, GOOGLE_VERIFY, NAVER_VERIFY, GA_ID
+from countries import COUNTRIES, AFFILIATES, VERIFIED, SITE_URL, REGIONS, BASE, FORM_URL, GOOGLE_VERIFY, NAVER_VERIFY, GA_ID, AFF_BY_COUNTRY, HOME_AFF
 from guides import GUIDES
 
 with open(os.path.join(os.path.dirname(__file__), "data", "fields.json"), encoding="utf-8") as _f:
@@ -213,12 +213,18 @@ def affiliate_block(c=None):
 
 def prep_card(c=None):
     """계산기 바로 아래 '출발 전 이것도 챙기세요' 카드 (선택 사항임을 분명히)."""
-    items = aff_items(c, limit=3)
+    if c is None:
+        items = []
+        for slug in HOME_AFF:
+            first = [x for x in AFF_BY_COUNTRY.get(slug, []) if x.get("href")][:1]
+            items += first
+    else:
+        items = [x for x in AFF_BY_COUNTRY.get(c["slug"], []) if x.get("href")][:3]
     if not items:
         return ""
     links = "".join(
-        f'<a href="{e(h)}" target="_blank" rel="sponsored noopener"><b>{e(a["title"])}</b><span>{e(a["desc"])}</span></a>'
-        for a, h in items)
+        f'<a href="{e(x["href"])}" target="_blank" rel="sponsored noopener"><b>{e(x["title"])}</b><span>{e(x["desc"])}</span></a>'
+        for x in items)
     return f"""
 <div class="prep">
   <div class="prep-head"><p><span class="dot dot-blue"></span>출발 전 이것도 챙기세요 <em>(선택)</em></p><span class="ad-tag">광고 · 제휴</span></div>
