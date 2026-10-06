@@ -360,3 +360,5 @@ footer { background: rgba(255,255,255,.7); backdrop-filter: blur(6px); margin-to
   .prep-head { align-items: flex-start; }
   .prep-links { grid-template-columns: 1fr; }
 }
+.fids-cell.fx b small { font-weight: 500; font-size: 11px; opacity: .8; margin-left: 4px; }
+.fids-cell.fx em { font-style: normal; color: var(--navy); }

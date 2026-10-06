@@ -101,7 +101,7 @@ def page(path, title, desc, body, jsonld=None, index=True):
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=IBM+Plex+Sans+KR:wght@400;600;700&display=swap">
 <link rel="icon" href="{up}assets/logo.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{up}assets/icon-180.png">
-<link rel="stylesheet" href="{up}assets/style.css?v={VERIFIED.replace("-", "")}f">
+<link rel="stylesheet" href="{up}assets/style.css?v={VERIFIED.replace("-", "")}g">
 {ld}
 </head>
 <body>
@@ -123,7 +123,7 @@ def page(path, title, desc, body, jsonld=None, index=True):
   <p>일부 링크는 제휴 링크이며, 구매 시 입국노트가 수수료를 받을 수 있습니다. 이용자가 내는 가격은 같습니다.</p>
   <p><a href="{up}about/">운영 원칙·개인정보</a> · <a href="{up}contact/">정보 오류 제보·문의</a> · <a href="{up}guide/">가이드</a></p>
 </div></footer>
-<script src="{up}assets/app.js?v={VERIFIED.replace("-", "")}f"></script>
+<script src="{up}assets/app.js?v={VERIFIED.replace("-", "")}g"></script>
 </body>
 </html>
 """
@@ -366,6 +366,23 @@ RELATED = {
 DEFAULT_RELATED = ["fake-sites", "timing", "family"]
 
 
+# 나라별 환율 칸 (통화코드, 표시 단위, 단위 이름) — 값은 app.js가 불러와요
+FX = {
+    "japan": ("JPY", 100, "엔"), "taiwan": ("TWD", 1, "대만달러"), "china": ("CNY", 1, "위안"),
+    "vietnam": ("VND", 10000, "동"), "thailand": ("THB", 1, "바트"), "philippines": ("PHP", 1, "페소"),
+    "malaysia": ("MYR", 1, "링깃"), "singapore": ("SGD", 1, "싱가포르달러"), "indonesia": ("IDR", 10000, "루피아"),
+    "cambodia": ("USD", 1, "달러"), "guam": ("USD", 1, "달러"), "palau": ("USD", 1, "달러"),
+    "maldives": ("USD", 1, "달러"), "new-zealand": ("NZD", 1, "뉴질랜드달러"), "canada": ("CAD", 1, "캐나다달러"),
+}
+
+def fx_cell(slug):
+    if slug not in FX:
+        return ""
+    cur, unit, uname = FX[slug]
+    return (f'\n    <div class="fids-cell fx" data-fx="{cur}" data-unit="{unit}" data-uname="{uname}" hidden>'
+            f'<b>환율 <small>오늘 기준</small></b><span>{unit:,}{uname} = 약 <em>…</em>원</span></div>')
+
+
 def build_country(c):
     up = "../"
     steps = "".join(f"<li>{e(s)}</li>" for s in c["steps"])
@@ -404,7 +421,7 @@ def build_country(c):
   <div class="fids-grid">
     <div class="fids-cell"><b>신고서</b><span>{e(c['form_short'])}</span></div>
     <div class="fids-cell"><b>신청 가능 시점</b><span style="color:var(--blue)">{e(c['window_text'])}</span></div>
-    <div class="fids-cell"><b>비용</b><span style="color:{'var(--green)' if free else 'var(--red)'}">{e(fee_short)}</span></div>
+    <div class="fids-cell"><b>비용</b><span style="color:{'var(--green)' if free else 'var(--red)'}">{e(fee_short)}</span></div>{fx_cell(c['slug'])}
   </div>
 </section>
 {low}

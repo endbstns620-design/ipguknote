@@ -241,3 +241,40 @@
     if (!once && e.target.closest("[data-calc]") && e.target.type === "date") { once = true; track("calculator_use", { page: page }); }
   });
 })();
+
+// 오늘 환율 (원화 기준, 하루 한 번 불러와 이 브라우저에 저장)
+(function () {
+  var cell = document.querySelector("[data-fx]");
+  if (!cell) return;
+  var cur = cell.dataset.fx, unit = Number(cell.dataset.unit) || 1;
+  var KEY = "ipguknote-fx", DAY = 864e5;
+  function show(rates, ts) {
+    var r = rates && rates[cur];
+    if (!r) return;
+    var won = unit / r;
+    var txt = won >= 100 ? Math.round(won).toLocaleString("ko-KR") : won.toFixed(1);
+    cell.querySelector("em").textContent = txt;
+    var d = new Date(ts || Date.now());
+    cell.title = (d.getMonth() + 1) + "월 " + d.getDate() + "일 기준 참고용 시세 · 실제 환전 금액과 달라요";
+    cell.hidden = false;
+  }
+  var cached = null;
+  try { cached = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
+  if (cached && cached.rates) show(cached.rates, cached.ts);
+  if (cached && Date.now() - cached.t < DAY / 2) return;
+  function save(rates, ts) {
+    try { localStorage.setItem(KEY, JSON.stringify({ t: Date.now(), ts: ts, rates: rates })); } catch (e) {}
+    show(rates, ts);
+  }
+  fetch("https://open.er-api.com/v6/latest/KRW").then(function (r) { return r.json(); }).then(function (j) {
+    if (j.result !== "success") throw 0;
+    save(j.rates, j.time_last_update_unix * 1000);
+  }).catch(function () {
+    return fetch("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/krw.min.json")
+      .then(function (r) { return r.json(); }).then(function (j) {
+        var rates = {};
+        Object.keys(j.krw || {}).forEach(function (k) { rates[k.toUpperCase()] = j.krw[k]; });
+        save(rates, j.date ? Date.parse(j.date) : Date.now());
+      });
+  }).catch(function () {});
+})();
