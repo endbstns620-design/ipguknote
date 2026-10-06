@@ -1,7 +1,7 @@
 # 국가 데이터는 data/countries.json 에 있습니다 — 수정 후 python build/build.py 실행
 import json, os
 
-VERIFIED = "2026-10-05"
+VERIFIED = "2026-10-06"
 # GitHub Pages 주소. 정식 도메인을 연결하면 여기만 수정
 SITE_URL = "https://ipguknote.com"
 BASE = "/"  # 사이트가 놓인 경로 (정식 도메인이면 "/")

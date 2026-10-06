@@ -356,14 +356,16 @@ def build_index():
 
 
 RELATED = {
-    "vietnam": ["fake-sites", "timing", "family"],
-    "thailand": ["tdac-edit", "fake-sites", "multi-country"],
-    "japan": ["vjw-qr", "family", "fake-sites"],
-    "philippines": ["philippines-red-qr", "fake-sites", "family"],
-    "malaysia": ["timing", "multi-country", "fake-sites"],
-    "singapore": ["family", "timing", "multi-country"],
+    "vietnam": ["forgot", "fake-sites", "timing"],
+    "thailand": ["tdac-edit", "forgot", "fake-sites"],
+    "japan": ["vjw-qr", "forgot", "family"],
+    "philippines": ["philippines-red-qr", "forgot", "fake-sites"],
+    "malaysia": ["forgot", "timing", "multi-country"],
+    "singapore": ["sgac-edit", "forgot", "family"],
+    "taiwan": ["twac", "forgot", "fake-sites"],
+    "guam": ["forgot", "fake-sites", "family"],
 }
-DEFAULT_RELATED = ["fake-sites", "timing", "family"]
+DEFAULT_RELATED = ["forgot", "fake-sites", "timing"]
 
 
 # 나라별 환율 칸 (통화코드, 표시 단위, 단위 이름) — 값은 app.js가 불러와요
@@ -533,6 +535,17 @@ def build_about():
     <li>신고는 항상 각국 정부 공식 사이트로 연결합니다.</li>
     <li>정보는 매월 공식 사이트 기준으로 다시 확인하며, 마지막 확인일을 표시합니다. (최종 확인 {VERIFIED})</li>
   </ul>
+</section>
+<section class="card">
+  <h2>누가, 어떻게 확인하나요</h2>
+  <p>입국노트는 정부·여행사와 관계없는 <strong>개인이 운영하는 무료 안내 사이트</strong>예요. 특정 업체의 홍보를 받고 정보를 바꾸지 않아요.</p>
+  <ol class="steps">
+    <li><strong>공식 출처만 씁니다.</strong> 각국 정부 공식 사이트, 공식 이용 매뉴얼·FAQ, 정부 발표문을 기준으로 해요. 블로그·여행사 글은 근거로 쓰지 않아요.</li>
+    <li><strong>나라별 페이지에 근거 링크를 답니다.</strong> 공식 주소가 정부 도메인이 아닌 나라는 그 주소가 공식이라는 근거도 함께 적어요.</li>
+    <li><strong>매월 다시 확인합니다.</strong> 바뀐 내용이 있으면 고치고 최종 확인일을 갱신해요.</li>
+    <li><strong>틀린 걸 찾으면 바로 고칩니다.</strong> 공식 발표와 다른 내용이 확인되면 그날 수정해요. 예: 2026년 10월, 베트남 사전 입국신고를 '의무'에서 공안부 발표대로 '선택'으로 고쳤어요.</li>
+  </ol>
+  <p style="margin-bottom:0">연락은 <a href="{up}contact/">제보 양식</a>으로 받아요.</p>
 </section>
 <section class="card">
   <h2>입국노트가 하지 않는 일</h2>

@@ -45,17 +45,17 @@ GUIDES = [
         "slug": "timing",
         "title": "입국신고 '72시간 전'과 '3일 전'은 뭐가 다를까?",
         "short": "72시간 vs 3일 차이",
-        "desc": "베트남·태국·필리핀은 도착 72시간 전, 말레이시아·싱가포르는 날짜 기준 3일. 신청 시작 시점을 헷갈리지 않는 법.",
+        "desc": "태국·필리핀은 도착 72시간 전, 싱가포르·말레이시아·베트남은 날짜 기준 3일. 신청 시작 시점을 헷갈리지 않는 법.",
         "body": """
 <p>나라마다 "도착 72시간 전부터"와 "도착 3일 전부터"라고 안내하는데, 둘은 계산 방식이 달라요.</p>
 
-<h2>시각 기준: 72시간 (베트남·태국·필리핀)</h2>
+<h2>시각 기준: 72시간 (태국·필리핀)</h2>
 <p>도착 예정 <strong>시각</strong>에서 정확히 72시간을 거꾸로 세요. 10월 10일 오전 9시 30분(현지) 도착이면 <strong>10월 7일 오전 9시 30분(현지)</strong>부터 신청할 수 있어요.</p>
-<p>한국과의 시차도 생각해야 해요. 베트남·태국은 한국보다 2시간 느려서, 위 예시는 한국 시간으로 10월 7일 오전 11시 30분이에요.</p>
+<p>한국과의 시차도 생각해야 해요. 태국은 한국보다 2시간 느려서, 위 예시는 한국 시간으로 10월 7일 오전 11시 30분이에요.</p>
 
-<h2>날짜 기준: 3일 (싱가포르, 말레이시아)</h2>
+<h2>날짜 기준: 3일 (싱가포르, 말레이시아, 베트남)</h2>
 <p>싱가포르는 <strong>도착일을 포함해 3일</strong>이에요. ICA 공식 예시: "6월 30일 도착이면 6월 28일부터 제출 가능".</p>
-<p>말레이시아도 "도착 3일 전 이내"로 안내해요. 입국노트 계산기는 싱가포르와 같은 방식(도착일 포함 3일)으로, 확실히 접수되는 날짜를 보여줘요.</p>
+<p>말레이시아와 베트남도 "도착(입국) 3일 이내"로 안내해요. 입국노트 계산기는 싱가포르와 같은 방식(도착일 포함 3일)으로, 확실히 접수되는 날짜를 보여줘요.</p>
 
 <h2>가장 쉬운 방법</h2>
 <p>각 나라 페이지의 계산기에 도착 날짜와 시각만 넣으세요. 신청 시작 시각을 한국 시간으로 보여주고, <strong>캘린더 알림</strong>도 만들어 줘요.</p>
@@ -218,6 +218,117 @@ GUIDES = [
 </ul>
 <p class="small muted">참고: <a href="https://www.vjw.digital.go.jp/manual/main/visitjapanweb_manual_en.html" target="_blank" rel="noopener">Visit Japan Web 공식 이용 매뉴얼</a></p>
 <p><a class="btn btn-primary" href="{up}japan/">일본 Visit Japan Web 전체 안내 보기</a></p>
+""",
+    },
+    {
+        "slug": "forgot",
+        "title": "입국신고 깜빡하고 출발했다면? 나라별 공항 대처법",
+        "short": "입국신고 깜빡했을 때",
+        "desc": "태국 TDAC·싱가포르 SG Arrival Card·괌 EDF는 도착 공항에서 할 수 있고, 대만은 출발 공항 체크인 카운터 QR로 할 수 있어요. 일본·베트남은 의무가 아니에요. 공식 안내 기준 나라별 대처법.",
+        "body": """
+<p>입국신고를 안 하고 비행기를 탔더라도 대부분 방법이 있어요. 다만 <strong>필리핀처럼 탑승 전에 확인하는 나라</strong>는 공항 가기 전에 꼭 해야 해요. 아래는 각국 공식 안내로 확인한 내용만 적었어요.</p>
+
+<h2>도착해서 해도 되는 나라</h2>
+<ul class="tips">
+  <li><strong>태국 (TDAC):</strong> 수완나품·돈므앙·푸껫·치앙마이·핫야이 공항에 키오스크와 와이파이가 있어요. 내려서 작성하면 돼요. (태국 이민국 TDAC FAQ)</li>
+  <li><strong>싱가포르 (SG Arrival Card):</strong> 안 냈으면 입국심사 전에 도착해서 제출해야 해요. 그만큼 심사가 늦어져요. (싱가포르 ICA)</li>
+  <li><strong>괌 (EDF):</strong> 공항 수하물 찾는 곳에 키오스크가 있어요. 가족은 대표 1명이 내면 돼요. (괌 관광청)</li>
+</ul>
+
+<h2>출발 공항에서 해야 하는 나라</h2>
+<ul class="tips">
+  <li><strong>대만 (TWAC):</strong> 안 하면 입국심사를 진행할 수 없어요. 출발 공항 체크인 카운터에 QR코드가 붙어 있으니 <strong>탑승 전에</strong> 휴대폰으로 작성하세요. (대만 이민서)</li>
+  <li><strong>필리핀 (eTravel):</strong> 비행기 타기 전에 항공사 직원이 QR을 확인해요. 도착 후 작성할 수 있다는 공식 안내는 확인되지 않아서, <strong>체크인 전에</strong> 끝내야 해요.</li>
+</ul>
+
+<h2>의무가 아닌 나라</h2>
+<ul class="tips">
+  <li><strong>일본 (Visit Japan Web):</strong> 의무가 아니에요. 세관은 종이 신고서를 그대로 쓸 수 있어요. (일본 세관)</li>
+  <li><strong>베트남 (사전 입국신고):</strong> 공안부가 "의무가 아닌 선택"이라고 발표했어요. 안 했으면 일반 입국심사 줄로 가면 돼요.</li>
+</ul>
+
+<h2>공식 안내가 불분명한 나라 — 출발 전에 하세요</h2>
+<ul class="tips">
+  <li><strong>말레이시아 (MDAC):</strong> 의무예요. "늦어도 도착 시"까지 가능하다는 정부 기관 안내가 있지만, 공항 키오스크 안내는 확인되지 않아요.</li>
+  <li><strong>인도네시아 (All Indonesia):</strong> 의무예요. 도착 시 작성 가능 여부는 공식 사이트에서 확인되지 않았어요.</li>
+</ul>
+
+<h2>도착 공항에서 급하게 할 때</h2>
+<ol class="steps">
+  <li>공항 와이파이에 먼저 연결해요.</li>
+  <li>검색하지 말고 <strong>입국노트 나라별 페이지의 공식 주소</strong>로 들어가요. 급할 때 유료 대행 사이트에 걸리기 쉬워요.</li>
+  <li>여권, 항공편명, 숙소 영문 주소를 준비해요. 숙소 주소는 예약 메일에서 복사하면 빨라요.</li>
+</ol>
+<p class="small muted">참고: <a href="https://tdac.immigration.go.th/manual/en/faq.html" target="_blank" rel="noopener">태국 TDAC FAQ</a> · <a href="https://ask.gov.sg/ica/questions/clos83fv6018p5k0wm8lb89d2" target="_blank" rel="noopener">싱가포르 ICA</a> · <a href="https://www.immigration.gov.tw/5475/5478/141457/142068/398041/" target="_blank" rel="noopener">대만 이민서</a> · <a href="https://www.visitguam.com/about-guam/entry-and-exit-formalities/" target="_blank" rel="noopener">괌 관광청</a> · <a href="https://www.customs.go.jp/english/passenger/declaration/declaration_app.html" target="_blank" rel="noopener">일본 세관</a> · <a href="https://en.bocongan.gov.vn/article/immigration-department-launches-pre-arrival-information-system-1778670404" target="_blank" rel="noopener">베트남 공안부</a></p>
+<p><a class="btn btn-primary" href="{up}guide/compare/">나라별 공식 주소 표 보기</a></p>
+""",
+    },
+    {
+        "slug": "sgac-edit",
+        "title": "싱가포르 SG Arrival Card 수정하는 법 · 확인 메일이 안 올 때",
+        "short": "SG Arrival Card 수정·메일",
+        "desc": "항공편이나 날짜가 바뀌면 SG Arrival Card를 새로 내면 돼요. 새 것이 예전 것을 대신하고 취소할 필요도 없어요. 확인 메일이 안 올 때와 e-Pass 찾는 법까지 싱가포르 ICA 공식 안내 기준.",
+        "body": """
+<p>싱가포르 입국카드(SG Arrival Card)는 일정이 바뀌어도 걱정할 필요 없어요. <strong>새로 한 번 더 내면 끝</strong>이에요.</p>
+
+<h2>항공편·날짜가 바뀌었을 때</h2>
+<ul class="tips">
+  <li>바뀐 정보로 <strong>SG Arrival Card를 다시 제출</strong>해요. 새로 낸 것이 예전 것을 대신해요.</li>
+  <li>예전 것을 <strong>취소할 필요는 없어요.</strong></li>
+  <li>건강 상태가 바뀐 경우에는 'Update SGAC' 기능으로 고칠 수 있어요. 고친 뒤 PDF를 다시 내려받거나 MyICA 앱에서 확인해요.</li>
+</ul>
+
+<h2>확인 메일이 안 올 때</h2>
+<ol class="steps">
+  <li><strong>스팸·정크 메일함</strong>을 먼저 보세요. 확인 메일에는 DE 번호가 적혀 있어요.</li>
+  <li>제출 직후 화면에서 <strong>PDF를 내려받을 수 있어요.</strong> 메일이 안 와도 이걸 저장해 두세요.</li>
+  <li>입국할 때는 확인 메일(휴대폰 화면이나 출력본)을 보여주면 돼요.</li>
+  <li>입국 후 받는 전자 방문 허가증(e-Pass)을 못 받았다면 <a href="https://eservices.ica.gov.sg/sgarrivalcard/epassenquiry" target="_blank" rel="noopener">ICA e-Pass 조회 페이지</a>에서 찾을 수 있어요.</li>
+</ol>
+<p>이메일 주소는 꼭 넣으세요. 안 넣으면 확인 메일을 못 받고 입국심사가 늦어질 수 있어요.</p>
+
+<h2>꼭 알아둘 것</h2>
+<ul class="tips">
+  <li><strong>제출 시점:</strong> 도착일을 포함해 3일 전부터예요. 6월 30일 도착이면 6월 28일부터 낼 수 있어요.</li>
+  <li><strong>여행 한 번에 하나:</strong> 싱가포르에 다시 들어올 때마다 새로 내야 해요.</li>
+  <li><strong>환승만 하는 경우:</strong> 입국심사를 거치지 않고 공항 안에서 환승하면 안 내도 돼요.</li>
+  <li><strong>무료:</strong> ICA 공식 사이트나 MyICA 앱에서만 내세요. ICA는 돈을 받는 비공식 사이트 63곳을 공개 경고했어요.</li>
+</ul>
+<p class="small muted">참고: <a href="https://www.ica.gov.sg/enter-transit-depart/entering-singapore/sg-arrival-card" target="_blank" rel="noopener">싱가포르 ICA SG Arrival Card</a> · <a href="https://ask.gov.sg/ica/questions/clos83fv801995k0wmiszar0x" target="_blank" rel="noopener">ICA 공식 Q&amp;A</a></p>
+<p><a class="btn btn-primary" href="{up}singapore/">싱가포르 입국카드 전체 안내 보기</a></p>
+""",
+    },
+    {
+        "slug": "twac",
+        "title": "대만 온라인 입국신고(TWAC) 꼭 해야 할까? 수정 방법까지",
+        "short": "대만 입국신고 의무·수정",
+        "desc": "2025년 10월부터 대만은 종이 입국카드를 없애고 온라인 입국신고(TWAC)를 의무로 바꿨어요. 한국인도 대상이고, 제출 후 언제든 온라인으로 고칠 수 있어요. 대만 이민서 공식 안내 기준.",
+        "body": """
+<p>대만은 <strong>2025년 10월 1일부터 종이 입국카드를 없앴어요.</strong> 무비자로 가는 한국인도 온라인 입국신고(TWAC)를 해야 해요.</p>
+
+<h2>핵심만 정리</h2>
+<ul class="tips">
+  <li><strong>대상:</strong> 방문 비자나 무비자로 들어가는 외국인 (한국인 관광객 포함)</li>
+  <li><strong>시점:</strong> 도착 3일 전부터 낼 수 있어요.</li>
+  <li><strong>비용:</strong> 무료예요.</li>
+  <li><strong>안 하면:</strong> 입국심사를 진행할 수 없어요.</li>
+  <li><strong>가족·일행:</strong> 한 번에 최대 16명까지 같이 낼 수 있어요.</li>
+</ul>
+
+<h2>잘못 입력했거나 일정이 바뀌었을 때</h2>
+<p>대만 이민서 안내에 따르면 제출한 뒤에도 <strong>온라인에서 언제든 확인하고 고칠 수 있어요.</strong> 다시 낼 필요 없이 공식 사이트에서 내 신고서를 찾아 수정하세요.</p>
+
+<h2>깜빡하고 공항에 왔다면</h2>
+<p>출발 공항 <strong>체크인 카운터에 TWAC QR코드</strong>가 붙어 있어요. 비행기 타기 전에 휴대폰으로 작성하세요.</p>
+
+<h2>헷갈리기 쉬운 것</h2>
+<ul class="tips">
+  <li><strong>"7일 전부터"라는 글:</strong> 예전 대사관 공지에 남아 있는 내용이에요. 지금 대만 이민서 공식 안내는 <strong>3일 전</strong>이에요.</li>
+  <li><strong>자동출입국(e-Gate) 등록자:</strong> e-Gate에 등록했다고 TWAC가 면제된다는 공식 안내는 찾지 못했어요. 그냥 내는 게 안전해요.</li>
+  <li><strong>거류증(ARC) 소지자:</strong> 공식 안내는 방문객을 대상으로 해서, 거류증이 있는 사람은 대상이 아니에요.</li>
+</ul>
+<p class="small muted">참고: <a href="https://www.immigration.gov.tw/5385/7229/7238/398036/" target="_blank" rel="noopener">대만 이민서 공지</a> · <a href="https://www.immigration.gov.tw/5475/5478/141457/142068/398041/" target="_blank" rel="noopener">영문 안내</a></p>
+<p><a class="btn btn-primary" href="{up}taiwan/">대만 입국신고 전체 안내 보기</a></p>
 """,
     },
 ]
