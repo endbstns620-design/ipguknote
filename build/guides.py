@@ -143,4 +143,81 @@ GUIDES = [
 <p>방콕 → 싱가포르 → 다시 방콕처럼 한 나라를 두 번 들어가면, 입국할 때마다 새로 신고하는 방식이라고 생각하세요. 첫 입국 때 받은 QR을 재사용할 수 없어요.</p>
 """,
     },
+    {
+        "slug": "tdac-edit",
+        "title": "태국 TDAC 잘못 입력했을 때 수정하는 법 (다시 낼 필요 없어요)",
+        "short": "태국 TDAC 수정 방법",
+        "desc": "태국 디지털 입국카드(TDAC)에 항공편·숙소·날짜를 잘못 적었다면 공식 사이트의 Update Arrival Card로 무료 수정할 수 있어요. 고칠 수 없는 항목 3가지와 수정 순서.",
+        "body": """
+<p>태국 TDAC를 제출한 뒤 항공편이나 숙소, 날짜가 바뀌었다면 <strong>새로 낼 필요 없이 공식 사이트에서 고치면 돼요.</strong> 수정도 무료예요.</p>
+
+<h2>준비할 것 3가지</h2>
+<ul class="tips">
+  <li><strong>TDAC 번호</strong> (TH Digital Arrival Card No.) — 제출 후 받은 카드와 이메일에 적혀 있어요.</li>
+  <li><strong>생년월일</strong></li>
+  <li><strong>국적</strong> (Republic of Korea)</li>
+</ul>
+
+<h2>수정 순서</h2>
+<ol class="steps">
+  <li>공식 사이트 <a href="https://tdac.immigration.go.th/" target="_blank" rel="noopener">tdac.immigration.go.th</a>에 들어가 <strong>Update Arrival Card</strong>를 눌러요.</li>
+  <li>TDAC 번호, 생년월일, 국적을 넣고 <strong>Search</strong>를 눌러요.</li>
+  <li>바꿀 내용을 고쳐요. 앞 단계로 돌아가려면 <strong>Previous</strong>, 그만두려면 <strong>Cancel</strong>이에요.</li>
+  <li>이메일 주소를 넣고 약관에 동의한 뒤 <strong>Submit</strong>을 눌러요.</li>
+  <li>수정된 카드를 <strong>다시 내려받아</strong> 저장해요. 예전 캡처는 지워 두는 게 헷갈리지 않아요.</li>
+</ol>
+
+<h2>이 3가지는 고칠 수 없어요</h2>
+<p>공식 매뉴얼에 따르면 제출한 뒤에는 아래 항목을 바꿀 수 없어요.</p>
+<ul class="tips">
+  <li>여권상 영문 이름 (Full Name)</li>
+  <li>국적</li>
+  <li>생년월일</li>
+</ul>
+<p>이 셋 중 하나가 틀렸다면 수정 메뉴로는 해결이 안 돼요. 공식 매뉴얼에는 이 경우 어떻게 하라는 안내가 따로 없어서, 출발 전에 공식 사이트에서 정확한 정보로 다시 작성할 수 있는지 확인하고, 애매하면 항공사나 태국 이민국에 문의하세요.</p>
+
+<h2>가족·일행이 함께 낼 때</h2>
+<p>한 번에 <strong>최대 10명</strong>까지 묶어서 제출할 수 있고, 앞 사람 정보를 복사해 쓸 수 있어요. 일정이 같은 가족이라면 이 기능이 편해요.</p>
+
+<h2>주의하세요</h2>
+<ul class="tips">
+  <li>공식 주소는 <strong>tdac.immigration.go.th</strong> 하나예요. 이름이 비슷한 다른 주소에서 수정·재발급 비용을 받으면 대행 사이트예요.</li>
+  <li>수정한 뒤에는 이메일로 받은 최신 카드를 저장해 두고, 입국심사 때 그걸 보여주세요.</li>
+</ul>
+<p class="small muted">참고: <a href="https://tdac.immigration.go.th/manual/en/index.html" target="_blank" rel="noopener">태국 이민국 TDAC 공식 매뉴얼</a></p>
+<p><a class="btn btn-primary" href="{up}thailand/">태국 TDAC 전체 안내 보기</a></p>
+""",
+    },
+    {
+        "slug": "vjw-qr",
+        "title": "비짓재팬웹(Visit Japan Web) QR코드가 안 나올 때 확인할 3가지",
+        "short": "비짓재팬웹 QR 안 나올 때",
+        "desc": "Visit Japan Web에서 입국심사·세관 QR코드가 안 보인다면 대부분 등록이 덜 끝난 경우예요. 공식 매뉴얼 기준으로 확인할 3가지와 공항 가기 전 팁.",
+        "body": """
+<p>Visit Japan Web에 정보를 다 넣었는데 QR코드가 안 보인다면, 대부분 <strong>등록이 하나 덜 끝난 경우</strong>예요. 공식 매뉴얼 기준으로 아래 3가지를 차례로 확인하세요.</p>
+
+<h2>1. 입국심사와 세관 신고를 둘 다 등록했나요?</h2>
+<p>QR코드는 두 가지 등록을 <strong>모두</strong> 끝내야 나와요.</p>
+<ul class="tips">
+  <li><strong>외국인 입국기록</strong> (Disembarkation Card for Foreigner) — 입국심사용</li>
+  <li><strong>휴대품·별송품 신고</strong> (Declaration of Accompanied Articles and Unaccompanied Articles) — 세관용</li>
+</ul>
+<p>한쪽만 등록하고 멈추면 QR 화면까지 가지 않아요. 일정 화면에서 두 항목이 모두 '등록 완료'인지 보세요.</p>
+
+<h2>2. 'QR코드 표시' 버튼을 눌렀나요?</h2>
+<p>등록을 마쳐도 QR이 바로 뜨지 않아요. 일정 화면에서 <strong>입국심사·세관 신고 QR코드 표시</strong> 버튼을 따로 눌러야 보여요.</p>
+
+<h2>3. 동반 가족의 세관 신고도 끝냈나요?</h2>
+<p>동반 가족을 함께 등록했다면, 가족의 세관 신고까지 마쳐야 QR이 나올 수 있어요. 아이 몫도 빠뜨리지 마세요.</p>
+
+<h2>공항 가기 전에</h2>
+<ul class="tips">
+  <li>QR이 보이면 <strong>바로 캡처</strong>해 두세요. 공항 와이파이가 느리면 로그인부터 오래 걸려요.</li>
+  <li>도착 몇 시간 전까지는 등록을 끝내 두는 게 안전해요. 기내에서 급하게 하지 마세요.</li>
+  <li>Visit Japan Web은 일본 디지털청의 무료 서비스예요. 등록을 대신해 준다며 돈을 받는 곳은 공식이 아니에요.</li>
+</ul>
+<p class="small muted">참고: <a href="https://www.vjw.digital.go.jp/manual/main/visitjapanweb_manual_en.html" target="_blank" rel="noopener">Visit Japan Web 공식 이용 매뉴얼</a></p>
+<p><a class="btn btn-primary" href="{up}japan/">일본 Visit Japan Web 전체 안내 보기</a></p>
+""",
+    },
 ]

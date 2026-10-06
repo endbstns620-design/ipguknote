@@ -351,7 +351,8 @@ def build_index():
 
 RELATED = {
     "vietnam": ["fake-sites", "timing", "family"],
-    "thailand": ["fake-sites", "multi-country", "family"],
+    "thailand": ["tdac-edit", "fake-sites", "multi-country"],
+    "japan": ["vjw-qr", "family", "fake-sites"],
     "philippines": ["philippines-red-qr", "fake-sites", "family"],
     "malaysia": ["timing", "multi-country", "fake-sites"],
     "singapore": ["family", "timing", "multi-country"],
